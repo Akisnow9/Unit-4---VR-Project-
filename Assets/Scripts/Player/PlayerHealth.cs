@@ -13,26 +13,26 @@ namespace UnityStandardAssets.Characters.FirstPerson
         public int startingHealth = 100;
 
         //gets referance when player is hurt
-        public GameObject playerhurt;
+      //  public GameObject playerhurt;
 
         // The current health the player has.
         public int currentHealth;
 
         //Referance to the the Bowie and its gunpoint on the player
-        public GameObject TheBowie;
-        public GameObject SecGunpoint;
+       // public GameObject TheBowie;
+       // public GameObject SecGunpoint;
 
         //Referance to the Yowie
-        public GameObject TheYowie;
+       // public GameObject TheYowie;
 
         // Reference to the PLayers UI health bar.
-        public Slider healthSlider;
+       public Slider healthSlider;
 
         // Reference to an image to flash on the screen on being hurt. When player is damaged
         public Image damageImage;
 
         //Referance to gun lights
-        GunLight gunLight;
+       // GunLight gunLight;
       
         // The speed the damageImage will fade at.
         public float flashSpeed = 5f;
@@ -41,18 +41,18 @@ namespace UnityStandardAssets.Characters.FirstPerson
         public Color flashColour = new Color(1f, 0f, 0f, 0.1f);                                  
 
         // Reference to the player's movement.
-        CharacterController playerMovement;
+       // CharacterController playerMovement;
 
         //Referance to the grenade script
-        FireGrenade fireGrenade;
+      //  FireGrenade fireGrenade;
 
         //this Variable is not yet resolved
         Timer timer;
 
         // Reference to the PlayerShooting script.
-        PlayerShooting playerShooting;
+      //  PlayerShooting playerShooting;
 
-        public GameObject gunDeactivate;
+       // public GameObject gunDeactivate;
 
         // Whether the player is dead.
         bool isDead;
@@ -66,10 +66,10 @@ namespace UnityStandardAssets.Characters.FirstPerson
         {
             // Setting up the references.
 
-            gunLight = GetComponentInChildren<GunLight>();
-            fireGrenade = GetComponentInChildren<FireGrenade>();
-            playerMovement = GetComponent<CharacterController>();
-            playerShooting = GetComponentInChildren<PlayerShooting>();
+          //  gunLight = GetComponentInChildren<GunLight>();
+          //  fireGrenade = GetComponentInChildren<FireGrenade>();
+          //  playerMovement = GetComponent<CharacterController>();
+          //  playerShooting = GetComponentInChildren<PlayerShooting>();
             timer = GetComponent<Timer>();
             currentHealth = startingHealth;
             
@@ -82,7 +82,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             if (damaged)
             {
                 //Instantiates the player hurt SFX prefab when the player is hurt
-                Instantiate(playerhurt, gameObject.transform.position, transform.rotation);
+              //  Instantiate(playerhurt, gameObject.transform.position, transform.rotation);
                 // ... set the colour of the damageImage to the flash colour.
                 damageImage.color = flashColour;
             }
@@ -125,10 +125,11 @@ namespace UnityStandardAssets.Characters.FirstPerson
         {
             // Set the death flag so this function won't be called again.
             isDead = true;
+            Debug.Log("PLayer is dead");
             //Disables muzzleflash when player is dead
-            playerShooting.StopMuzzleFlash();
+          //  playerShooting.StopMuzzleFlash();
             // Turn off any remaining shooting effects.
-            playerShooting.DisableEffects();
+         //   playerShooting.DisableEffects();
 
 
             // Set the audiosource to play the death clip and play it (this will stop the hurt sound from playing).
@@ -136,13 +137,13 @@ namespace UnityStandardAssets.Characters.FirstPerson
             //playerAudio.Play();
 
             // Turn off the movement and shooting scripts.
-            playerMovement.enabled = false;
-            playerShooting.enabled = false;
-            fireGrenade.enabled = false;
-            TheBowie.SetActive(false);
-            SecGunpoint.SetActive(false);
-            TheYowie.SetActive(false);
-            gunLight.enabled = false;
+       //     playerMovement.enabled = false;
+        //    playerShooting.enabled = false;
+        //    fireGrenade.enabled = false;
+        //    TheBowie.SetActive(false);
+       //     SecGunpoint.SetActive(false);
+       //     TheYowie.SetActive(false);
+      //      gunLight.enabled = false;
             
 
             

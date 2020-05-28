@@ -44,6 +44,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             {
                 // ... the player is in range.
                 playerInRange = true;
+                Debug.Log ("Baddie has found Player");
             }
         }
 

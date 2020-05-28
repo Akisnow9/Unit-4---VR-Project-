@@ -6,7 +6,7 @@ using UnityEngine;
 public class EnemyHealth : MonoBehaviour
 {
     //Referance to when the enmey is hurt
-    public AudioSource enemyhurt;
+   // public AudioSource enemyhurt;
     
     //enemys starting Health 
     public int Ehealth = 100;
@@ -14,29 +14,30 @@ public class EnemyHealth : MonoBehaviour
     public int Scorevalue = 10;
     //This stores a prefab that when the enemey dies, it cause an explosion damaging the player and nearby zombies
 
-    public GameObject blood;
+   // public GameObject blood;
    //  public  ParticleSystem hitparticles;
-    bool HasExploded = false;
-    public GameObject Explosivo;
+   // bool HasExploded = false;
+   // public GameObject Explosivo;
 
     //IF the enemy takes damage from a value from another script, it will take damage
      void Awake()
     {
-        enemyhurt = GetComponent<AudioSource>();
+       // enemyhurt = GetComponent<AudioSource>();
        // hitparticles = GetComponent<ParticleSystem>();
     }
 
     public void TakeDamage (int amount)
     {
-        Instantiate(blood, gameObject.transform.position, transform.rotation);
+       // Instantiate(blood, gameObject.transform.position, transform.rotation);
         Ehealth -= amount;
-        enemyhurt.Play();
+       // enemyhurt.Play();
         //If the enemys health is 0......
-        if (Ehealth <= 0f && !HasExploded)
-        {
+      //  if (Ehealth <= 0f && !HasExploded)
+        if (Ehealth <= 0f)
+            {
 
             Die();
-            HasExploded = true;
+          //  HasExploded = true;
         }
         
     }
@@ -46,7 +47,7 @@ public class EnemyHealth : MonoBehaviour
     void Die ()
     {
         ScoreManager.score += Scorevalue;
-		Instantiate(Explosivo, gameObject.transform.position, transform.rotation);
+		//Instantiate(Explosivo, gameObject.transform.position, transform.rotation);
 		Destroy(gameObject);
         
     }
