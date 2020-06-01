@@ -115,7 +115,7 @@ public class MachineGun : MonoBehaviour
         float distanceOfRay = 3000f;
 
         //Cast the ray and check if it hits anything
-        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, distanceOfRay))
+        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, distanceOfRay) && (hit.transform.gameObject.tag == "Enemy") )
         {
             /*  if (Input.GetKeyDown(KeyCode.R))
               {
@@ -152,20 +152,21 @@ public class MachineGun : MonoBehaviour
                 // muzzleFlash.Play();
                 canShoot = false;
                 Invoke("ResetShooting", timeBetweenBullets);
+                hit.transform.GetComponent<EnemyHealth>().TakeDamage(damage);
+                Debug.Log("I shot an enemy with a machine gun!");
+                    // - 1 everytime the player fires and updates text
+                    // ammoCount -= 1;
+                    // UpdateText();
 
-                // - 1 everytime the player fires and updates text
-               // ammoCount -= 1;
-               // UpdateText();
 
+                    //If you hit the enemy, you will damage the zombie and eventuallu kill it
+                    // if (hit.transform.gameObject.tag == "Enemy")
+                    //  {
+                    //    hit.transform.GetComponent<EnemyHealth>().TakeDamage(damage);
+                    //     Debug.Log("I shot an enemy with a machine gun!");
+                    //}
 
-                //If you hit the enemy, you will damage the zombie and eventuallu kill it
-                if (hit.transform.gameObject.tag == "Enemy")
-                {
-                        hit.transform.GetComponent<EnemyHealth>().TakeDamage(damage);
-                        Debug.Log("I shot an enemy with a machine gun!");
                 }
-
-            }
             //If not firing, dont display the effects
             else if (Input.GetMouseButtonUp(0))
             {

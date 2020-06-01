@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace UnityStandardAssets.Characters.FirstPerson
-{
+
     // This Script controls the timer that shows the player how long they have been alive fot
     public class Timer : MonoBehaviour
     {
@@ -73,4 +72,4 @@ namespace UnityStandardAssets.Characters.FirstPerson
         }
 
     }
-}
+

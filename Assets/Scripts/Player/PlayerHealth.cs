@@ -3,9 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace UnityStandardAssets.Characters.FirstPerson
-{
-
     //This script controls the Players Health and will happen if the player dies
     public class PlayerHealth : MonoBehaviour
     {
@@ -162,7 +159,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             }
         }
     }
-}
+
        
 
 

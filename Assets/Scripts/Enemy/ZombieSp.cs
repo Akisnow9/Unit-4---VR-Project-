@@ -12,6 +12,8 @@ public class ZombieSp : MonoBehaviour
     //a float that that controls the speed of the spawner over time
     public float timer = 0.01f;
 
+    public PlayerHealth playerHealth;
+
     //the amount of time it spawns objects
     public float spawnTime;
 
@@ -19,13 +21,19 @@ public class ZombieSp : MonoBehaviour
     public Transform spawnPosition;
 
     // Use this for initialization
+
+     void Awake()
+    {
+        playerHealth.GetComponent<PlayerHealth>();
+    }
+
     void Start()
     {
-
-        //InvokeRepeating repeats the code such as functions
-        //you  need 2 parameters, 1: what function you will code. 2: the amount of time it will repeat
-        //Then once every second is called: it will run spawnTime every 2 secs for this Invoke to be called again
-        InvokeRepeating("InstantiateObject", 1, spawnTime);
+        
+            //InvokeRepeating repeats the code such as functions
+            //you  need 2 parameters, 1: what function you will code. 2: the amount of time it will repeat
+            //Then once every second is called: it will run spawnTime every 2 secs for this Invoke to be called again
+            InvokeRepeating("InstantiateObject", 1, spawnTime);
     
 
     }
@@ -57,13 +65,16 @@ public class ZombieSp : MonoBehaviour
 
     void InstantiateObject()
     {
+        if (playerHealth.currentHealth <= 0f)
+        {
+            return;
+        }
+            //This variable a will get random vales in the array into Variable a and return a value in the boxes below
+            //e.g 2 = a = spawned
+            //The length propertie will count down all the elements you added or removed in the array you refering too (spawnObjectPrefabs)  
 
-        //This variable a will get random vales in the array into Variable a and return a value in the boxes below
-        //e.g 2 = a = spawned
-        //The length propertie will count down all the elements you added or removed in the array you refering too (spawnObjectPrefabs)  
-
-        //Instantiates random zombies in any order as Game Objects
-        int a = Random.Range(0, spawnObjectPrefabs.Length);
+            //Instantiates random zombies in any order as Game Objects
+            int a = Random.Range(0, spawnObjectPrefabs.Length);
         GameObject spawnObjectInstance;        //if you put any element number in the brackets, in will only spawn that element
         spawnObjectInstance = Instantiate(spawnObjectPrefabs[a], spawnPosition.position, spawnPosition.rotation) as GameObject;
         //We are using the spawnPostion to assign its position and rotation parameters
