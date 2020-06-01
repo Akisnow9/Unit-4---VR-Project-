@@ -88,6 +88,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1411286857323829868}
+  - component: {fileID: 8226071054497276848}
   - component: {fileID: 3193225013685458791}
   - component: {fileID: 847933626629134439}
   - component: {fileID: 7838574008746970585}
@@ -115,6 +116,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &8226071054497276848
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4516399418168280924}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.66
+  m_Height: 2.32
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!135 &3193225013685458791
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -141,8 +156,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeBetweenAttacks: 0.5
-  attackDamage: 10
-  player: {fileID: 8281431057489588390, guid: b3d05509ab5fc434084f006df731654b, type: 3}
+  attackDamage: 5
+  player: {fileID: 100000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
   playerHealth: {fileID: 1196578039, guid: b3d05509ab5fc434084f006df731654b, type: 3}
 --- !u!114 &7838574008746970585
 MonoBehaviour:
@@ -168,7 +183,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8140c682b0b44aa41bb1ef46a7caf52c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Ehealth: 100
+  Ehealth: 10
   Scorevalue: 10
 --- !u!195 &7037892476970779586
 NavMeshAgent:
