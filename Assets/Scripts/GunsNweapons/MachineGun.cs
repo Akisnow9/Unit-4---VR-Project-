@@ -125,7 +125,7 @@ public class MachineGun : MonoBehaviour
               } */
             //Controls the fire rate of the gun
             timer += Time.deltaTime;
-            if (Input.GetMouseButton(0) && timer >= timeBetweenBullets)
+            if ( timer >= timeBetweenBullets)
             {
                 timer = 0f;
 
