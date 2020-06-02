@@ -5,7 +5,13 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/GoogleVR/Demos/Scenes/HelloVR.unity
     guid: bb36d2905dc634f1c9eecb35beecaca8
+  - enabled: 0
+    path: Assets/Scenes/greybox002.unity
+    guid: 8dfd690aeba60554abc0b210e0192fb2
+  - enabled: 1
+    path: Assets/Scenes/greybox003.unity
+    guid: 872813cbc183fe44dbbb022d6ab0c25f
   m_configObjects: {}
