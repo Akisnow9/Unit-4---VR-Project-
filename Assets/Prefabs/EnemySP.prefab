@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1366507990721713154
 Transform:
   m_ObjectHideFlags: 0
@@ -24,7 +24,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1366507990721713276}
-  m_LocalRotation: {x: -0, y: -0.70710707, z: -0, w: 0.70710653}
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 14.698, y: 0.386, z: 0.12}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -46,5 +46,6 @@ MonoBehaviour:
   spawnObjectPrefabs:
   - {fileID: 4516399418168280924, guid: 9ef0df795c5a4324383a24410b3649d6, type: 3}
   timer: 0.01
+  playerHealth: {fileID: 0}
   spawnTime: 2
   spawnPosition: {fileID: 1366507990721713154}
