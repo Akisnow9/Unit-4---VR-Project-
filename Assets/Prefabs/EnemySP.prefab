@@ -13,7 +13,7 @@ GameObject:
   m_Layer: 0
   m_Name: EnemySP
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -45,7 +45,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnObjectPrefabs:
   - {fileID: 4516399418168280924, guid: 9ef0df795c5a4324383a24410b3649d6, type: 3}
-  timer: 0.01
+  timer: 0.03
   playerHealth: {fileID: 0}
   spawnTime: 2
   spawnPosition: {fileID: 1366507990721713154}

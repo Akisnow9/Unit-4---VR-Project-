@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 //This script gives player health when collided
-namespace UnityStandardAssets.Characters.FirstPerson
-{
+//namespace UnityStandardAssets.Characters.FirstPerson
+//{
     public class HealthPickUp2 : MonoBehaviour
     {
-        public GameObject healthSFX;
+        //public GameObject healthSFX;
 
         PlayerHealth playerHealth;
 
@@ -33,16 +33,16 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         //When collided with the Player, it access's the players health script and gives the player health
         // and then destroys itself
-        void OnTriggerEnter(Collider other)
+       public void HealPlayer()
         {
-            if (other.gameObject.tag == "Player")
-            {
-                Instantiate(healthSFX, gameObject.transform.position, transform.rotation);
+          //  if (other.gameObject.tag == "Player")
+           // {
+                //Instantiate(healthSFX, gameObject.transform.position, transform.rotation);
                 GameObject player = GameObject.FindGameObjectWithTag("Player");
                 player.GetComponent<PlayerHealth>().HealthEarned(healthSupply);
                 Destroy(gameObject);
               
             }
         }
-    }
-}
+  //  }
+//}

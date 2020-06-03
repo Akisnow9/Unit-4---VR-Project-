@@ -14,13 +14,16 @@ public class EnemyHealth : MonoBehaviour
     public int Scorevalue = 10;
     //This stores a prefab that when the enemey dies, it cause an explosion damaging the player and nearby zombies
 
-   // public GameObject blood;
-   //  public  ParticleSystem hitparticles;
-   // bool HasExploded = false;
-   // public GameObject Explosivo;
+    // public GameObject blood;
+    //  public  ParticleSystem hitparticles;
+    // bool HasExploded = false;
+    // public GameObject Explosivo;
+    public Transform pickupPosition;
+    // stores pickups so when thge enmey dies, it instantiates powerups
+    public Rigidbody[] SpawnPickupPrefabs;
 
     //IF the enemy takes damage from a value from another script, it will take damage
-     void Awake()
+    void Awake()
     {
        // enemyhurt = GetComponent<AudioSource>();
        // hitparticles = GetComponent<ParticleSystem>();
@@ -47,8 +50,11 @@ public class EnemyHealth : MonoBehaviour
     void Die ()
     {
         ScoreManager.score += Scorevalue;
-		//Instantiate(Explosivo, gameObject.transform.position, transform.rotation);
-		Destroy(gameObject);
+        //Instantiate(Explosivo, gameObject.transform.position, transform.rotation);
+        int a = Random.Range(0, SpawnPickupPrefabs.Length);
+        Rigidbody spawnPickupInstance;
+        spawnPickupInstance = Instantiate(SpawnPickupPrefabs[a], pickupPosition.position, pickupPosition.rotation) as Rigidbody;
+        Destroy(gameObject);
         
     }
 }

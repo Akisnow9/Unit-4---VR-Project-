@@ -25,6 +25,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         AudioSource gunAudio;
 
+        HealthPickUp2 healthpick;
         //Stores referance to the enemyhealth to hurt or kill the enemy
         EnemyHealth enemyHealth;
 
@@ -48,6 +49,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         }
         void Start()
         {
+           // ammoCount = 20;
             cam = Camera.main;
             UpdateText();
         }
@@ -97,6 +99,11 @@ namespace UnityStandardAssets.Characters.FirstPerson
                     hit.transform.GetComponent<EnemyHealth>().TakeDamage(damage);
                     Debug.Log("I shot an enemy with a shotgun!");
                 }
+                if (hit.transform.gameObject.tag == "Health")
+                {
+                    hit.transform.GetComponent<HealthPickUp2>().HealPlayer();
+                    Debug.Log("I shot an Healthkit!");
+                }
             }
 
             //Bullets that goes forward
@@ -107,6 +114,10 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 {
                     hit.transform.GetComponent<EnemyHealth>().TakeDamage(damage);
                     Debug.Log("I shot an enemy with a shotgun!");
+                }
+                else if (hit.transform.gameObject.tag == "untagged")
+                {
+                    return;
                 }
 
             }

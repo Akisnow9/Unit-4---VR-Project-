@@ -157,7 +157,10 @@ public class MachineGun : MonoBehaviour
                     // - 1 everytime the player fires and updates text
                     // ammoCount -= 1;
                     // UpdateText();
-
+            if (hit.transform.gameObject.tag == "Health")
+                    {
+                        Debug.Log("I shot the health kit");
+                    }
 
                     //If you hit the enemy, you will damage the zombie and eventuallu kill it
                     // if (hit.transform.gameObject.tag == "Enemy")
@@ -180,6 +183,7 @@ public class MachineGun : MonoBehaviour
                 DisableEffects();
             }
         }
+
         //displays a ray showing you where you have shot
         Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward * distanceOfRay);
     }

@@ -57,6 +57,7 @@ using UnityEngine.UI;
         // True when the player gets damaged.
         bool damaged;
 
+    public GameObject guns;
 
 
         void Awake()
@@ -120,7 +121,8 @@ using UnityEngine.UI;
 
         void Death()
         {
-            // Set the death flag so this function won't be called again.
+        // Set the death flag so this function won't be called again.
+        guns.SetActive(false);
             isDead = true;
             Debug.Log("PLayer is dead");
             //Disables muzzleflash when player is dead
