@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace UnityStandardAssets.Characters.FirstPerson
-{
+//namespace UnityStandardAssets.Characters.FirstPerson
+//{
     public class Shotgun : MonoBehaviour
     {
         //number of damage to deal to enemy
@@ -20,6 +20,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         //The distance of the raycast
         public float distance = 15f;
 
+        public GameObject shotgunmesh;
         // muzzle flash
         public GameObject muzzle;
 
@@ -29,20 +30,27 @@ namespace UnityStandardAssets.Characters.FirstPerson
         //Stores referance to the enemyhealth to hurt or kill the enemy
         EnemyHealth enemyHealth;
 
+    public bool Shotgunready = false;
         // Impact of the game object shot
         public GameObject impact;
 
         public GameObject defaultMachinegun;
 
+        public AudioSource shotgunstart;
+
+    ShotgunPowerup shotgunPU;
         //referrance of camera to fire ray
         Camera cam;
 
 
         void Awake()
         {
-            //  muzzleFlash = GetComponentInChildren<ParticleSystem>();
-            enemyHealth = GetComponent<EnemyHealth>();
-              gunAudio = GetComponent<AudioSource>();
+        //  muzzleFlash = GetComponentInChildren<ParticleSystem>();
+        shotgunstart = GetComponent<AudioSource>();
+        enemyHealth = GetComponent<EnemyHealth>();
+         gunAudio = GetComponent<AudioSource>();
+        shotgunPU = GetComponent<ShotgunPowerup>();
+
             // gunFire = GetComponentInChildren<Animation>();
 
             // Start is called before the first frame update
@@ -63,21 +71,33 @@ namespace UnityStandardAssets.Characters.FirstPerson
         // Update is called once per frame
         void Update()
         {
-            if (Input.GetButtonDown("Fire1") && ammoCount >= 0)
+            if (Input.GetButtonDown("Fire1") && ammoCount >= 0 && Shotgunready == true)
             {
                 UpdateText();
                 Shoot();
             }
-            if (ammoCount <= 0)
-            {
-                // muzzleFlash.Stop();
-                // clipempty.Play();
-                gameObject.SetActive(false);
-                defaultMachinegun.SetActive(true);
-                return;
-            }
+        if (ammoCount == 0)
+        {
+            // muzzleFlash.Stop();
+            // clipempty.Play();
+            Shotgunready = false;
+            shotgunmesh.SetActive(false);
+            // gameObject.SetActive(false);
+             defaultMachinegun.SetActive(true);
+            // return;
+        }
+        else if (ammoCount >= 0)
+        {
+            Shotgunready = true;
+
 
         }
+        }
+            
+        
+        
+
+        
         //Method to shoot
         private void Shoot()
         {
@@ -104,10 +124,20 @@ namespace UnityStandardAssets.Characters.FirstPerson
                     hit.transform.GetComponent<HealthPickUp2>().HealPlayer();
                     Debug.Log("I shot an Healthkit!");
                 }
+                if (hit.transform.gameObject.tag == "Shotgun")
+                {
+                hit.transform.GetComponent<ShotgunPowerup>().GiveShotgun();
+                shotgunstart.Play();
+                }
+                else if (hit.transform.gameObject.tag != "Enemy")
+                {
+                    return;
+                }
+
             }
 
             //Bullets that goes forward
-            if (Physics.Raycast(cam.transform.position, cam.transform.forward + new Vector3(-2f, 0f, 0f), out hit_1, distance))
+            if (Physics.Raycast(cam.transform.position, cam.transform.forward + new Vector3(-8f, 0f, 0f), out hit_1, distance))
             {
                 Instantiate(impact, hit_1.point, Quaternion.LookRotation(hit_1.normal));
                 if (hit.transform.gameObject.tag == "Enemy")
@@ -115,7 +145,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                     hit.transform.GetComponent<EnemyHealth>().TakeDamage(damage);
                     Debug.Log("I shot an enemy with a shotgun!");
                 }
-                else if (hit.transform.gameObject.tag == "untagged")
+                else if (hit.transform.gameObject.tag != "Enemy")
                 {
                     return;
                 }
@@ -123,7 +153,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             }
 
             //Bullets that goes up
-            if (Physics.Raycast(cam.transform.position, cam.transform.forward + new Vector3(0f, 6f, 0f), out hit_2, distance))
+            if (Physics.Raycast(cam.transform.position, cam.transform.forward + new Vector3(0f, 10f, 0f), out hit_2, distance))
             {
                 Instantiate(impact, hit_2.point, Quaternion.LookRotation(hit_2.normal));
                 if (hit.transform.gameObject.tag == "Enemy")
@@ -131,10 +161,14 @@ namespace UnityStandardAssets.Characters.FirstPerson
                     hit.transform.GetComponent<EnemyHealth>().TakeDamage(damage);
                     Debug.Log("I shot an enemy with a shotgun!");
                 }
+                else if (hit.transform.gameObject.tag != "Enemy")
+                {
+                    return;
+                }
             }
 
             //Bullets that goes down
-            if (Physics.Raycast(cam.transform.position, cam.transform.forward + new Vector3(0f, -6f, 0f), out hit_3, distance))
+            if (Physics.Raycast(cam.transform.position, cam.transform.forward + new Vector3(0f, -12f, 0f), out hit_3, distance))
             {
                 Instantiate(impact, hit_3.point, Quaternion.LookRotation(hit_3.normal));
                 if (hit.transform.gameObject.tag == "Enemy")
@@ -142,7 +176,19 @@ namespace UnityStandardAssets.Characters.FirstPerson
                     hit.transform.GetComponent<EnemyHealth>().TakeDamage(damage);
                     Debug.Log("I shot an enemy with a shotgun!");
                 }
+                else if (hit.transform.gameObject.tag != "Enemy")
+                {
+                    return;
+                }
             }
         }
+
+    public void AmmoPickup( int amount)
+    {
+        ammoCount += amount;
+       // shotgunstart.Play();
+        UpdateText();
+        Debug.Log("I got shotgun ammo!");
     }
-}
+    }
+//}

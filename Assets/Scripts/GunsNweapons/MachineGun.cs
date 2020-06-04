@@ -28,25 +28,31 @@ public class MachineGun : MonoBehaviour
     //stores referance of the gunshots
      AudioSource gunAudio;
 
-    //stores referance of when the clip is empty
-    // public AudioSource clipempty;
+        //Referance to the shotgunPU script
+        ShotgunPowerup shotgunPU;
 
-    //stores referance of when the player reloads
-    //public AudioSource ReloadSound;
+        //Referance to the players shotgun
+        public GameObject shotgunReady;
 
-    //Shows  the how much ammo that the player has ready to reload for the next fire 
-    //public int ammoCount = 500;
+        //stores referance of when the clip is empty
+        // public AudioSource clipempty;
 
-   // public int CombatAdd = 1;
+        //stores referance of when the player reloads
+        //public AudioSource ReloadSound;
 
-    //Shows the current clip that the player is ready to shoot
-    //public int clipSize = 100;
+        //Shows  the how much ammo that the player has ready to reload for the next fire 
+        //public int ammoCount = 500;
 
-    //Shows the starting  clip that the player is ready to shoot
-    //public int clipCount = 50;
+        // public int CombatAdd = 1;
 
-    //shows effects in certain amount of time
-    public float effectsDisplayTime;
+        //Shows the current clip that the player is ready to shoot
+        //public int clipSize = 100;
+
+        //Shows the starting  clip that the player is ready to shoot
+        //public int clipCount = 50;
+
+        //shows effects in certain amount of time
+        public float effectsDisplayTime;
 
     //controls how quickly the gun can fire
     public float timeBetweenBullets = 5f;
@@ -65,6 +71,8 @@ public class MachineGun : MonoBehaviour
         //  muzzleFlash = GetComponentInChildren<ParticleSystem>();
         enemyHealth = GetComponent<EnemyHealth>();
          gunAudio = GetComponent<AudioSource>();
+         shotgunPU = GetComponent<ShotgunPowerup>();
+   
         // gunFire = GetComponentInChildren<Animation>();
        
     }
@@ -115,7 +123,7 @@ public class MachineGun : MonoBehaviour
         float distanceOfRay = 3000f;
 
         //Cast the ray and check if it hits anything
-        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, distanceOfRay) && (hit.transform.gameObject.tag == "Enemy") )
+        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, distanceOfRay, 1<< 8))
         {
             /*  if (Input.GetKeyDown(KeyCode.R))
               {
@@ -152,16 +160,27 @@ public class MachineGun : MonoBehaviour
                 // muzzleFlash.Play();
                 canShoot = false;
                 Invoke("ResetShooting", timeBetweenBullets);
-                hit.transform.GetComponent<EnemyHealth>().TakeDamage(damage);
-                Debug.Log("I shot an enemy with a machine gun!");
                     // - 1 everytime the player fires and updates text
                     // ammoCount -= 1;
                     // UpdateText();
             if (hit.transform.gameObject.tag == "Health")
                     {
+                        hit.transform.GetComponent<HealthPickUp2>().HealPlayer();
                         Debug.Log("I shot the health kit");
                     }
+            if (hit.transform.gameObject.tag == "Enemy")
+                    {
+                     hit.transform.GetComponent<EnemyHealth>().TakeDamage(damage);
+                     Debug.Log("I shot an enemy with a machine gun!");
+                    }
 
+            if (hit.transform.gameObject.tag == "Shotgun")
+                    {
+                        hit.transform.GetComponent<ShotgunPowerup>().GiveShotgun();
+                        gameObject.SetActive(false);
+                        shotgunReady.SetActive(true);
+                        Debug.Log("I got a shotty!");
+                    }
                     //If you hit the enemy, you will damage the zombie and eventuallu kill it
                     // if (hit.transform.gameObject.tag == "Enemy")
                     //  {
@@ -183,7 +202,6 @@ public class MachineGun : MonoBehaviour
                 DisableEffects();
             }
         }
-
         //displays a ray showing you where you have shot
         Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward * distanceOfRay);
     }

@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Enemy
   - Health
+  - Shotgun
+  - Pshotgun
   layers:
   - Default
   - TransparentFX
@@ -15,7 +17,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - Shootable
   - 
   - 
   - 
