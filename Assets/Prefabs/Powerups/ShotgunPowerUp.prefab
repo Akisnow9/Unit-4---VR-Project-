@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6796452856756497525}
   - component: {fileID: 6796452856756497522}
   - component: {fileID: 6796452856756497523}
+  - component: {fileID: 559996778350387341}
   m_Layer: 8
   m_Name: ShotgunPowerUp
   m_TagString: Shotgun
@@ -46,11 +47,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbc547205e83086499e5048fb1f369f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 4987672099407547431, guid: d3e66ea3881c9244783a8f75e7b181fd, type: 3}
   speed: 0.6
-  ammogiven: 50
-  playersShotgun: {fileID: 2854319631108893907, guid: aae832ddc41ff5e47af8d6514956ed63,
-    type: 3}
+  ammogiven: 40
+  ammoreceived: 20
+  playersShotgun: {fileID: 0}
 --- !u!54 &6796452856756497522
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -80,6 +80,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.31, y: 0.32, z: 1.15}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &559996778350387341
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6796452856756497526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44a3c0d2bdccd91479d8eadf0d612a42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DestroyTime: 5
 --- !u!1 &6796452857426579345
 GameObject:
   m_ObjectHideFlags: 0

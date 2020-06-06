@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 7838574008746970585}
   - component: {fileID: 6947058303480561149}
   - component: {fileID: 7037892476970779586}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Weak Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -196,7 +196,7 @@ MonoBehaviour:
   - {fileID: 1617971584764733566, guid: 13e12e096b6ff77478ea5dd7bca2dd83, type: 3}
   - {fileID: 1617971584764733566, guid: 13e12e096b6ff77478ea5dd7bca2dd83, type: 3}
   - {fileID: 1617971584764733566, guid: 13e12e096b6ff77478ea5dd7bca2dd83, type: 3}
-  - {fileID: 1617971584764733566, guid: 13e12e096b6ff77478ea5dd7bca2dd83, type: 3}
+  - {fileID: 6796452856756497522, guid: 68470dc81cea6564eaa65c279acc5538, type: 3}
   - {fileID: 2122267758161303225, guid: b68ffc851640afa478a1de3cf58ced80, type: 3}
 --- !u!195 &7037892476970779586
 NavMeshAgent:

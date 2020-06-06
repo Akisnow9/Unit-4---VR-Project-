@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnObjectPrefabs:
-  - {fileID: 4516399418168280924, guid: 9ef0df795c5a4324383a24410b3649d6, type: 3}
+  - {fileID: 4516399418168280924, guid: bb40140f8f9200a4fa5058ec41f411ae, type: 3}
   timer: 0.03
   playerHealth: {fileID: 0}
   spawnTime: 2

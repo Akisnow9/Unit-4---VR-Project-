@@ -8,6 +8,8 @@ TagManager:
   - Health
   - Shotgun
   - Pshotgun
+  - Plasmagun
+  - Pplasmagun
   layers:
   - Default
   - TransparentFX

@@ -8,13 +8,15 @@ public class ShotgunPowerup : MonoBehaviour
     Shotgun shotgun;
 
     //referance to the player
-    public GameObject player;
+   // public GameObject player;
 
    
     //The speed that the powerup rotates until picked up
     public float speed;
 
     public int ammogiven = 50;
+
+    public int ammoreceived = 20;
     //Referance to players shotgun (temporaliry unactive)
     public GameObject playersShotgun;
 
@@ -37,10 +39,17 @@ public class ShotgunPowerup : MonoBehaviour
         // {
         //Instantiate(healthSFX, gameObject.transform.position, transform.rotation);
         GameObject player = GameObject.FindGameObjectWithTag("Player");
+        GameObject playersShotgun = GameObject.FindGameObjectWithTag("Pshotgun");
         //playersShotgun.SetActive(true);
         playersShotgun.GetComponent<Shotgun>().AmmoPickup(ammogiven);
         Destroy(gameObject);
-
+    }
+    public void GetMoreAmmo()
+    {
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        GameObject playersShotgun = GameObject.FindGameObjectWithTag("Pshotgun");
+        playersShotgun.GetComponent<Shotgun>().AmmoPickup(ammoreceived);
+        Destroy(gameObject);
     }
 }
 

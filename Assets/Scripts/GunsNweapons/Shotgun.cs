@@ -126,7 +126,7 @@ using UnityEngine.UI;
                 }
                 if (hit.transform.gameObject.tag == "Shotgun")
                 {
-                hit.transform.GetComponent<ShotgunPowerup>().GiveShotgun();
+                hit.transform.GetComponent<ShotgunPowerup>().GetMoreAmmo();
                 shotgunstart.Play();
                 }
                 else if (hit.transform.gameObject.tag != "Enemy")
