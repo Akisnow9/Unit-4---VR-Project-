@@ -141,8 +141,12 @@ namespace UnityStandardAssets.Characters.FirstPerson
                         //flames.SetActive(false);
                      gameObject.SetActive(false);
                     defaultMachinegun.SetActive(true);
-                        return;
+                      //  return;
                 }
+                else if (ammoCount >= 0)
+                    {
+                        defaultMachinegun.SetActive(false);
+                    }
                 //Dectivates shooting if need too
                 if (canShoot == false)
                 {
