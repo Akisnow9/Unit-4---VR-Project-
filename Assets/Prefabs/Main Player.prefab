@@ -29,9 +29,10 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.498, y: -0.494, z: 0.449}
   m_LocalScale: {x: 0.27465558, y: 0.27611077, z: 1.1083}
-  m_Children: []
+  m_Children:
+  - {fileID: 114107612169148123}
   m_Father: {fileID: 114107612790628780}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &114107611211317681
 MeshFilter:
@@ -283,16 +284,16 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 114107612169148120}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.716}
-  m_LocalScale: {x: 0.0022685716, y: 0.0022685716, z: 0.0022685716}
+  m_LocalPosition: {x: 0, y: 0, z: 0.24090958}
+  m_LocalScale: {x: 0.008259697, y: 0.008216166, z: 0.0020468931}
   m_Children:
   - {fileID: 114107611340106942}
-  m_Father: {fileID: 114107612790628780}
+  m_Father: {fileID: 114107611211317695}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0.221, y: -0.433}
+  m_AnchoredPosition: {x: -1.008536, y: 0.22092578}
   m_SizeDelta: {x: 135.7, y: 108.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &114107612169148124
@@ -384,7 +385,6 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 114107612169148123}
   - {fileID: 114107611211317695}
   m_Father: {fileID: 4987672099083719275}
   m_RootOrder: 0
@@ -403,6 +403,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 10
   shotgunReady: {fileID: 114107611198470126}
+  Plasmagunready: {fileID: 4987672099687629377}
   effectsDisplayTime: 0
   timeBetweenBullets: 0.2
 --- !u!82 &114107612790628782
@@ -900,7 +901,7 @@ GameObject:
   - component: {fileID: 4987672099687629379}
   m_Layer: 0
   m_Name: Plasmagun
-  m_TagString: Untagged
+  m_TagString: Pplasmagun
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -936,6 +937,8 @@ MonoBehaviour:
   damage: 10
   shootRate: 0.3
   defaultMachinegun: {fileID: 114107612790628781}
+  PlasmagunMesh: {fileID: 4987672100375331553}
+  PlasmagunReady: 0
   m_shotPrefab: {fileID: 136330, guid: 9a0c3383523899643a8d0661cfaca4e4, type: 3}
   ammoText: {fileID: 4987672100052224155}
   ammoCount: 0
@@ -949,7 +952,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 1e6c4184cdec7ae459c9a8bcb095d758, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 06ee7f6610c0ec947a5cfe4c25874093, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -1225,13 +1228,14 @@ GameObject:
   - component: {fileID: 4987672100375331554}
   - component: {fileID: 4987672100375331556}
   - component: {fileID: 4987672100375331555}
+  - component: {fileID: 1363260906}
   m_Layer: 0
   m_Name: PlasmaGunMesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4987672100375331554
 Transform:
   m_ObjectHideFlags: 0
@@ -1294,6 +1298,102 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!82 &1363260906
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4987672100375331553}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 1f813ee30cd53bb4eaec75198d84ee3b, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1001 &2740986626086440827
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1381,6 +1481,11 @@ PrefabInstance:
       propertyPath: shotgunmesh
       value: 
       objectReference: {fileID: 114107611198470126}
+    - target: {fileID: 2854319631108893905, guid: aae832ddc41ff5e47af8d6514956ed63,
+        type: 3}
+      propertyPath: playersPlasmagun
+      value: 
+      objectReference: {fileID: 4987672099687629377}
     - target: {fileID: 2854319631108893907, guid: aae832ddc41ff5e47af8d6514956ed63,
         type: 3}
       propertyPath: m_Name

@@ -28,11 +28,18 @@ public class MachineGun : MonoBehaviour
     //stores referance of the gunshots
      AudioSource gunAudio;
 
-        //Referance to the shotgunPU script
+        //Referance to the PU scripts
         ShotgunPowerup shotgunPU;
+        PlasmagunPowerup plasmagunPU;
 
-        //Referance to the players shotgun
+
+        //Referance to the players weopon meshs to be ready
         public GameObject shotgunReady;
+        public GameObject Plasmagunready;
+
+        //This list the components to the plasam g
+        PlasmaGun plasmagun;
+        public GameObject PlayersPlasmagun;
 
         //stores referance of when the clip is empty
         // public AudioSource clipempty;
@@ -72,6 +79,10 @@ public class MachineGun : MonoBehaviour
         enemyHealth = GetComponent<EnemyHealth>();
          gunAudio = GetComponent<AudioSource>();
          shotgunPU = GetComponent<ShotgunPowerup>();
+            plasmagunPU = GetComponent<PlasmagunPowerup>();
+
+            plasmagun = PlayersPlasmagun.GetComponent<PlasmaGun>();
+
    
         // gunFire = GetComponentInChildren<Animation>();
        
@@ -181,6 +192,19 @@ public class MachineGun : MonoBehaviour
                         shotgunReady.SetActive(true);
                         Debug.Log("I got a shotty!");
                     }
+                 if (hit.transform.gameObject.tag == "Plasmagun")
+                    {
+                        hit.transform.GetComponent<PlasmagunPowerup>().GivePlasmagun();
+                        gameObject.SetActive(false);
+                        Plasmagunready.SetActive(true);
+                        //plasmagun.PlasmagunReady(true);
+                        Debug.Log(" I shot a plassy");
+                    }
+
+
+
+
+
                     //If you hit the enemy, you will damage the zombie and eventuallu kill it
                     // if (hit.transform.gameObject.tag == "Enemy")
                     //  {

@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace UnityStandardAssets.Characters.FirstPerson
-{
 
     public class PlasmaGun : MonoBehaviour
     {
@@ -13,10 +11,18 @@ namespace UnityStandardAssets.Characters.FirstPerson
         public float shootRate;
         private float m_shootRateTimeStamp;
 
-        //Referances to default machine gun
+        //Referances to the guns
         public GameObject defaultMachinegun;
+        public GameObject shotgunReady;
+    //Sricpts and game Objects we want to prepare
+        public GameObject PlasmagunMesh;
+        //public bool PlasmagunReady = false;
 
-        public GameObject m_shotPrefab;
+    //Scripts and Game Objects we want to reset the ammo
+    Shotgun shotgun;
+    ShotgunPowerup shotgunPU;
+
+    public GameObject m_shotPrefab;
         RaycastHit hit;
         float range = 1000.0f;
 
@@ -36,14 +42,17 @@ namespace UnityStandardAssets.Characters.FirstPerson
             //  muzzleFlash = GetComponentInChildren<ParticleSystem>();
             enemyHealth = GetComponent<EnemyHealth>();
              gunAudio = GetComponent<AudioSource>();
-            // gunFire = GetComponentInChildren<Animation>();
+        shotgun = GetComponent<Shotgun>();
+        shotgunPU = GetComponent<ShotgunPowerup>();
+        // gunFire = GetComponentInChildren<Animation>();
 
-        }
+    }
 
         // updates the text ready to be displayed to the player
         void Start()
         {
             UpdateText();
+        PlasmagunMesh.SetActive(false);
         }
 
         private void UpdateText()
@@ -56,27 +65,39 @@ namespace UnityStandardAssets.Characters.FirstPerson
         // Update is called once per frame
         void Update()
         {
-            if (Input.GetMouseButton(0) && ammoCount >= 0)
+            if (Input.GetMouseButton(0) && ammoCount > 0)
             {
                 //Checks to see if the shooter can shoot again with time. Time needs to pass before firing again
                 if (Time.time > m_shootRateTimeStamp)
                 {
                     //when time to shoot, shoot
+                    UpdateText();
                     shootRay();
                     ///then updates to the new time stamp
                     m_shootRateTimeStamp = Time.time + shootRate;
                 }
-                if (ammoCount == 0)
-                {
-                    
-                    //turns gameObject off when out of ammmo and switchs to default machine gun.
-                    gameObject.SetActive(false);
-                    defaultMachinegun.SetActive(true);
-                    // muzzleFlash.Stop();
-                    // clipempty.Play();
-                    return;
-                }
+            if (ammoCount == 0)
+            {
+               // PlasmagunReady = false;
+                //turns gameObject off when out of ammmo and switchs to default machine gun.
+                PlasmagunMesh.SetActive(false);
+               // defaultMachinegun.SetActive(true);
+                // muzzleFlash.Stop();
+                // clipempty.Play();
+                //return;
             }
+            else if (ammoCount >= 0)
+            {
+               
+                // shotgun.ammoCount = 0;
+                PlasmagunMesh.SetActive(true);
+            }
+         //   if (Combatadd == 1)
+           // {
+                //PlasmagunReady = true;
+                
+           // }
+        }
         }
 
         void shootRay()
@@ -90,17 +111,45 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 ammoCount -= 1;
                 UpdateText();
                 GameObject laser = GameObject.Instantiate(m_shotPrefab, transform.position, transform.rotation) as GameObject;
-              //  laser.GetComponent<ShotBehavior>().setTarget(hit.point);
+                laser.GetComponent<ShotBehavior>().setTarget(hit.point);
                 if (hit.transform.gameObject.tag == "Enemy")
                 {
                     hit.transform.GetComponent<EnemyHealth>().TakeDamage(damage);
                     Debug.Log("I shot an enemy with a plasma gun!");
                 }
-                //destroys laser if it dosent hit anything
+
+                if( hit.transform.gameObject.tag == "Plasmagun")
+            {
+                hit.transform.GetComponent<PlasmagunPowerup>().GetMoreAmmo();
+            }
+            
+            if (hit.transform.gameObject.tag == "Health")
+                {
+                hit.transform.GetComponent<HealthPickUp2>().HealPlayer();
+                Debug.Log("I shot the health kit with a plasma gun");
+                }
+            if (hit.transform.gameObject.tag == "Shotgun")
+            {
+                ammoCount = 0;
+                hit.transform.GetComponent<ShotgunPowerup>().GiveShotgun();
+                defaultMachinegun.SetActive(false);
+                shotgunReady.SetActive(true);
+            }
+
+
+            
+               //destroys laser if it dosent hit anything
                 GameObject.Destroy(laser, 2f);
                 //damages enemy when we shoot them
                
             }
         }
-    }
+public void AmmoPickup (int amount)
+{
+    ammoCount += amount;
+        Debug.Log("I got Plasma ammo");
+    UpdateText();
 }
+    }
+
+

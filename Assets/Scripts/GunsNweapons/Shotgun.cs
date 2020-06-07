@@ -35,10 +35,16 @@ using UnityEngine.UI;
         public GameObject impact;
 
         public GameObject defaultMachinegun;
+    public GameObject PlasmagunmeshReady;
 
         public AudioSource shotgunstart;
-
+    //Referances to gun power ups and guns players guns
+    PlasmagunPowerup plasmagunPU;
     ShotgunPowerup shotgunPU;
+    PlasmaGun plasmagun;
+
+    //referance to the players plasma gun to keep track of ammo
+    public GameObject playersPlasmagun;
         //referrance of camera to fire ray
         Camera cam;
 
@@ -50,6 +56,8 @@ using UnityEngine.UI;
         enemyHealth = GetComponent<EnemyHealth>();
          gunAudio = GetComponent<AudioSource>();
         shotgunPU = GetComponent<ShotgunPowerup>();
+        plasmagun = playersPlasmagun.GetComponent<PlasmaGun>();
+        plasmagunPU = GetComponent<PlasmagunPowerup>();
 
             // gunFire = GetComponentInChildren<Animation>();
 
@@ -71,32 +79,26 @@ using UnityEngine.UI;
         // Update is called once per frame
         void Update()
         {
-            if (Input.GetButtonDown("Fire1") && ammoCount >= 0 && Shotgunready == true)
+            if (Input.GetButtonDown("Fire1") && ammoCount > 0 && Shotgunready == true)
             {
                 UpdateText();
                 Shoot();
             }
-        if (ammoCount == 0)
+        if (ammoCount == 0 && plasmagun.ammoCount == 0)
         {
             // muzzleFlash.Stop();
             // clipempty.Play();
             Shotgunready = false;
-            shotgunmesh.SetActive(false);
-            // gameObject.SetActive(false);
-             defaultMachinegun.SetActive(true);
+            shotgunmesh.SetActive(false);        
+            defaultMachinegun.SetActive(true);
             // return;
         }
-        else if (ammoCount >= 0)
+        else if (ammoCount >= 0 && plasmagun.ammoCount == 0)
         {
             Shotgunready = true;
-
-
+           
         }
-        }
-            
-        
-        
-
+        }        
         
         //Method to shoot
         private void Shoot()
@@ -119,6 +121,10 @@ using UnityEngine.UI;
                     hit.transform.GetComponent<EnemyHealth>().TakeDamage(damage);
                     Debug.Log("I shot an enemy with a shotgun!");
                 }
+              //  else if (hit.transform.gameObject.tag != "Enemy")
+              //  {
+              //  return;
+              //  }
                 if (hit.transform.gameObject.tag == "Health")
                 {
                     hit.transform.GetComponent<HealthPickUp2>().HealPlayer();
@@ -129,10 +135,19 @@ using UnityEngine.UI;
                 hit.transform.GetComponent<ShotgunPowerup>().GetMoreAmmo();
                 shotgunstart.Play();
                 }
-                else if (hit.transform.gameObject.tag != "Enemy")
-                {
-                    return;
-                }
+            if (hit.transform.gameObject.tag == "Plasmagun")
+            {
+                ammoCount = 0;
+                hit.transform.GetComponent<PlasmagunPowerup>().GivePlasmagun();
+                defaultMachinegun.SetActive(false);
+                shotgunmesh.SetActive(false);
+                PlasmagunmeshReady.SetActive(true);
+                Debug.Log("I shot a shotgun with a plasmagun");
+
+            }
+
+
+
 
             }
 
@@ -168,7 +183,7 @@ using UnityEngine.UI;
             }
 
             //Bullets that goes down
-            if (Physics.Raycast(cam.transform.position, cam.transform.forward + new Vector3(0f, -12f, 0f), out hit_3, distance))
+            if (Physics.Raycast(cam.transform.position, cam.transform.forward + new Vector3(0f, -6f, 0f), out hit_3, distance))
             {
                 Instantiate(impact, hit_3.point, Quaternion.LookRotation(hit_3.normal));
                 if (hit.transform.gameObject.tag == "Enemy")
