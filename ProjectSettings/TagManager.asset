@@ -10,6 +10,8 @@ TagManager:
   - Pshotgun
   - Plasmagun
   - Pplasmagun
+  - PFlamer
+  - Flamer
   layers:
   - Default
   - TransparentFX

@@ -134,7 +134,7 @@ public class MachineGun : MonoBehaviour
         float distanceOfRay = 3000f;
 
         //Cast the ray and check if it hits anything
-        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, distanceOfRay, 1<< 8))
+        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, distanceOfRay))
         {
             /*  if (Input.GetKeyDown(KeyCode.R))
               {
@@ -144,7 +144,7 @@ public class MachineGun : MonoBehaviour
               } */
             //Controls the fire rate of the gun
             timer += Time.deltaTime;
-            if ( timer >= timeBetweenBullets)
+            if (Input.GetMouseButton(0) && timer >= timeBetweenBullets)
             {
                 timer = 0f;
 
