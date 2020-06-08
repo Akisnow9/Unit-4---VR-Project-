@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace UnityStandardAssets.Characters.FirstPerson
-{
+
 
     public class FlameThrower2 : MonoBehaviour
     { 
@@ -22,7 +21,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
     //stores referances of ammo text and clipText to diplay to show the player how much ammo he/she has
     public Text ammoText;
 
-
+    public GameObject Flamermesh;
     //Stores referance to the enemyhealth to hurt or kill the enemy
     EnemyHealth enemyHealth;
     //EnemyMovement2 enemyMovement2;
@@ -57,7 +56,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
     private bool canShoot = true;
 
         //shows gun particles when gun is fired
-        // public ParticleSystem muzzleFlash;
+         public ParticleSystem fireparticles;
 
     public GameObject defaultMachinegun;
 
@@ -66,7 +65,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         //Sets up Referances
         void Awake()
     {
-        //  muzzleFlash = GetComponentInChildren<ParticleSystem>();
+          fireparticles = GetComponentInChildren<ParticleSystem>();
         enemyHealth = GetComponent<EnemyHealth>();
         gunAudio = GetComponent<AudioSource>();
         // gunFire = GetComponentInChildren<Animation>();
@@ -129,23 +128,26 @@ namespace UnityStandardAssets.Characters.FirstPerson
               } */
             //Controls the fire rate of the gun
             timer += Time.deltaTime;
-            if (Input.GetMouseButton(0) && timer >= timeBetweenBullets && ammoCount >= 0)
+            if (Input.GetMouseButton(0) && timer >= timeBetweenBullets && ammoCount > 0)
             {
                 timer = 0f;
-                flames.SetActive(true);
+               // flames.SetActive(true);
                 //if you are out of ammo in your clip, you cant fire and a sound will play
-                if (ammoCount <= 0)
+                if (ammoCount == 1)
                 {
-                        // muzzleFlash.Stop();
-                        // clipempty.Play();
-                        //flames.SetActive(false);
-                     gameObject.SetActive(false);
-                    defaultMachinegun.SetActive(true);
+                     fireparticles.Stop();
+                    // clipempty.Play();
+                    //flames.SetActive(false);
+                    // gameObject.SetActive(false);
+                    Flamermesh.SetActive(false);
+                   defaultMachinegun.SetActive(true);
                       //  return;
                 }
                 else if (ammoCount >= 0)
                     {
-                        defaultMachinegun.SetActive(false);
+                    defaultMachinegun.SetActive(false);
+                    Flamermesh.SetActive(true);
+
                     }
                 //Dectivates shooting if need too
                 if (canShoot == false)
@@ -162,8 +164,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
 
                 //Makes sure the muzzleFlash stops and starts again
-                // muzzleFlash.Stop();
-                // muzzleFlash.Play();
+                fireparticles.Stop();
+                fireparticles.Play();
                 canShoot = false;
                 Invoke("ResetShooting", timeBetweenBullets);
 
@@ -173,17 +175,18 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
 
                 //If you hit the enemy, you will damage the zombie and eventuallu kill it
-                if (hit.transform.gameObject.tag == "Enemy")
-                {
-                    hit.transform.GetComponent<EnemyHealth>().TakeDamage(damage);
-                    Debug.Log("Im burning enimes with a flamer!");
-                }
+               // if (hit.transform.gameObject.tag == "Enemy")
+              //  {
+              //      hit.transform.GetComponent<EnemyHealth>().TakeDamage(damage);
+              //      Debug.Log("Im burning enimes with a flamer!");
+              //  }
 
             }
             //If not firing, dont display the effects
             else if (Input.GetMouseButtonUp(0))
             {
-                // muzzleFlash.Stop();
+                 fireparticles.Stop();
+                gunAudio.Stop();
                 // gunLight.enabled = false;
 
             }
@@ -199,13 +202,13 @@ namespace UnityStandardAssets.Characters.FirstPerson
     //Disables gun light when not firing
     public void DisableEffects()
     {
-            flames.SetActive(false);
+           // flames.SetActive(false);
 
     }
     //Disables muzzleflash when player is dead
     public void StopMuzzleFlash()
     {
-        //   muzzleFlash.Stop();
+          fireparticles.Stop();
     }
 
     //a function used to gain ammo when the player picks up ammo
@@ -213,7 +216,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
     {
         ammoCount += amount;
         //  ReloadSound.Play();
+        Debug.Log("I got flamer ammo");
         UpdateText();
     }
-}
 }

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8002871560980070011}
   - component: {fileID: 8002871560980070008}
   - component: {fileID: 8002871560980070005}
+  - component: {fileID: 1813941529}
   m_Layer: 8
   m_Name: PlasmaGunPowerUp
   m_TagString: Plasmagun
@@ -45,8 +46,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.31, y: 0.32, z: 1.15}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.79, y: 0.4112935, z: 1.27}
+  m_Center: {x: 0, y: 0.07435322, z: 0}
 --- !u!54 &8002871560980070008
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -78,6 +79,19 @@ MonoBehaviour:
   speed: 0.06
   ammogiven: 20
   ammoreceived: 10
+--- !u!114 &1813941529
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8002871560980070009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44a3c0d2bdccd91479d8eadf0d612a42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DestroyTime: 5
 --- !u!1 &8002871562505716026
 GameObject:
   m_ObjectHideFlags: 0

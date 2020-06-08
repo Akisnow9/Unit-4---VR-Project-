@@ -13,6 +13,9 @@ public class EnemyHealth : MonoBehaviour
     //Sets how much points the player gets when this enemey is destroyed
     public int Scorevalue = 10;
     //This stores a prefab that when the enemey dies, it cause an explosion damaging the player and nearby zombies
+    public bool isburning = false;
+    public int firedamage = 5;
+    public int fireDOT = 1;
 
     // public GameObject blood;
     //  public  ParticleSystem hitparticles;
@@ -21,6 +24,15 @@ public class EnemyHealth : MonoBehaviour
     public Transform pickupPosition;
     // stores pickups so when thge enmey dies, it instantiates powerups
     public Rigidbody[] SpawnPickupPrefabs;
+
+     void Update()
+    {
+        if (isburning == true)
+            Ehealth -= fireDOT;
+        Debug.Log("Im burning!");
+
+
+    }
 
     //IF the enemy takes damage from a value from another script, it will take damage
     void Awake()
@@ -44,6 +56,20 @@ public class EnemyHealth : MonoBehaviour
         }
         
     }
+    public void OnParticleCollision(GameObject other)
+    {
+        isburning = true;
+        Ehealth -= firedamage;
+        Debug.Log("A particle hit me!");
+        if (Ehealth <= 0f)
+            {
+
+            Die();
+            //  HasExploded = true;
+        }
+
+    }
+
 
     //The enemy will die by destroying its gameObject
     //This function also gives players points to the scoreValue

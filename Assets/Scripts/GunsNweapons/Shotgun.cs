@@ -42,9 +42,11 @@ using UnityEngine.UI;
     PlasmagunPowerup plasmagunPU;
     ShotgunPowerup shotgunPU;
     PlasmaGun plasmagun;
+    FlameThrower2 flamer;
 
     //referance to the players plasma gun to keep track of ammo
     public GameObject playersPlasmagun;
+    public GameObject playersFlamer;
         //referrance of camera to fire ray
         Camera cam;
 
@@ -58,6 +60,7 @@ using UnityEngine.UI;
         shotgunPU = GetComponent<ShotgunPowerup>();
         plasmagun = playersPlasmagun.GetComponent<PlasmaGun>();
         plasmagunPU = GetComponent<PlasmagunPowerup>();
+        flamer = playersFlamer.GetComponent<FlameThrower2>();
 
             // gunFire = GetComponentInChildren<Animation>();
 
@@ -84,7 +87,7 @@ using UnityEngine.UI;
                 UpdateText();
                 Shoot();
             }
-        if (ammoCount == 0 && plasmagun.ammoCount == 0)
+        if (ammoCount == 0 && plasmagun.ammoCount == 0 && flamer.ammoCount == 0)
         {
             // muzzleFlash.Stop();
             // clipempty.Play();
@@ -93,7 +96,7 @@ using UnityEngine.UI;
             defaultMachinegun.SetActive(true);
             // return;
         }
-        else if (ammoCount >= 0 && plasmagun.ammoCount == 0)
+        else if (ammoCount >= 0 && plasmagun.ammoCount == 0 && flamer.ammoCount == 0)
         {
             Shotgunready = true;
            

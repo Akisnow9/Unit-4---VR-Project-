@@ -31,13 +31,15 @@ public class MachineGun : MonoBehaviour
         //Referance to the PU scripts
         ShotgunPowerup shotgunPU;
         PlasmagunPowerup plasmagunPU;
+        FlameThrowerPowerUp flamerPU;
 
 
         //Referance to the players weopon meshs to be ready
         public GameObject shotgunReady;
         public GameObject Plasmagunready;
+        public GameObject flamerReady;
 
-        //This list the components to the plasam g
+        //This list the components to the plasam gun
         PlasmaGun plasmagun;
         public GameObject PlayersPlasmagun;
 
@@ -192,13 +194,22 @@ public class MachineGun : MonoBehaviour
                         shotgunReady.SetActive(true);
                         Debug.Log("I got a shotty!");
                     }
-                 if (hit.transform.gameObject.tag == "Plasmagun")
+            if (hit.transform.gameObject.tag == "Plasmagun")
                     {
                         hit.transform.GetComponent<PlasmagunPowerup>().GivePlasmagun();
                         gameObject.SetActive(false);
                         Plasmagunready.SetActive(true);
                         //plasmagun.PlasmagunReady(true);
                         Debug.Log(" I shot a plassy");
+                    }
+
+                    if (hit.transform.gameObject.tag == "Flamer")
+                    {
+                        hit.transform.GetComponent<FlameThrowerPowerUp>().GiveFlamer();
+                        //gameObject.SetActive(false);
+                        //flamerReady.SetActive(true);
+                        //plasmagun.PlasmagunReady(true);
+                        Debug.Log(" I shot a flamer");
                     }
 
 
