@@ -16,6 +16,7 @@ public class EnemyHealth : MonoBehaviour
     public bool isburning = false;
     public int firedamage = 5;
     public int fireDOT = 1;
+    public ParticleSystem  fireeffect;
 
     // public GameObject blood;
     //  public  ParticleSystem hitparticles;
@@ -28,9 +29,17 @@ public class EnemyHealth : MonoBehaviour
      void Update()
     {
         if (isburning == true)
+        {
+            
             Ehealth -= fireDOT;
-        Debug.Log("Im burning!");
+            Debug.Log("Im burning!");
+        }
+        if (Ehealth <= 0f)
+        {
 
+            Die();
+            //  HasExploded = true;
+        }
 
     }
 
@@ -38,7 +47,7 @@ public class EnemyHealth : MonoBehaviour
     void Awake()
     {
        // enemyhurt = GetComponent<AudioSource>();
-       // hitparticles = GetComponent<ParticleSystem>();
+     //  fireeffect = GetComponent<ParticleSystem>();
     }
 
     public void TakeDamage (int amount)
@@ -59,6 +68,7 @@ public class EnemyHealth : MonoBehaviour
     public void OnParticleCollision(GameObject other)
     {
         isburning = true;
+        fireeffect.Play();
         Ehealth -= firedamage;
         Debug.Log("A particle hit me!");
         if (Ehealth <= 0f)

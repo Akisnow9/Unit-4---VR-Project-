@@ -6,7 +6,7 @@ public class ShotgunPowerup : MonoBehaviour
 {
     //Referance to the shotgun script
     Shotgun shotgun;
-
+    FlameThrower2 flamer;
     //referance to the player
    // public GameObject player;
 
@@ -17,13 +17,19 @@ public class ShotgunPowerup : MonoBehaviour
     public int ammogiven = 50;
 
     public int ammoreceived = 20;
+
+    public int Removeflamerammo = 0;
     //Referance to players shotgun (temporaliry unactive)
     public GameObject playersShotgun;
+
+    //referance to the players flames
+    public ParticleSystem fireeffect;
 
     // Gets a referances ready to use when called
     void Awake()
     {
         shotgun = GetComponent<Shotgun>();
+        flamer = GetComponent<FlameThrower2>();
     }
 
     //Rotates the object around until collided
@@ -51,6 +57,19 @@ public class ShotgunPowerup : MonoBehaviour
         playersShotgun.GetComponent<Shotgun>().AmmoPickup(ammoreceived);
         Destroy(gameObject);
     }
+    /*
+        public void OnParticleCollision(GameObject other)
+    {
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        GameObject playersShotgun = GameObject.FindGameObjectWithTag("Pshotgun");
+        playersShotgun.GetComponent<Shotgun>().AmmoPickup(ammoreceived);
+        GameObject playersflamer = GameObject.FindGameObjectWithTag("PFlamer");
+        playersflamer.GetComponent<FlameThrower2>().Getshotgun();
+        Destroy(gameObject);
+        Debug.Log("I burned the shells with fire!");
+
+    }
+    */
 }
 
 

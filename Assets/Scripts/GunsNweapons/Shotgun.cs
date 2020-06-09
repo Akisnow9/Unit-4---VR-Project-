@@ -36,6 +36,8 @@ using UnityEngine.UI;
 
         public GameObject defaultMachinegun;
     public GameObject PlasmagunmeshReady;
+    public GameObject FlamethrowerMesh;
+   
 
         public AudioSource shotgunstart;
     //Referances to gun power ups and guns players guns
@@ -94,6 +96,7 @@ using UnityEngine.UI;
             Shotgunready = false;
             shotgunmesh.SetActive(false);        
             defaultMachinegun.SetActive(true);
+            FlamethrowerMesh.SetActive(false);
             // return;
         }
         else if (ammoCount >= 0 && plasmagun.ammoCount == 0 && flamer.ammoCount == 0)
@@ -136,6 +139,7 @@ using UnityEngine.UI;
                 if (hit.transform.gameObject.tag == "Shotgun")
                 {
                 hit.transform.GetComponent<ShotgunPowerup>().GetMoreAmmo();
+                PlasmagunmeshReady.SetActive(false);
                 shotgunstart.Play();
                 }
             if (hit.transform.gameObject.tag == "Plasmagun")
@@ -146,7 +150,17 @@ using UnityEngine.UI;
                 shotgunmesh.SetActive(false);
                 PlasmagunmeshReady.SetActive(true);
                 Debug.Log("I shot a shotgun with a plasmagun");
+            }
 
+            if (hit.transform.gameObject.tag == "Flamer")
+            {
+                ammoCount = 0;
+                hit.transform.GetComponent<FlameThrowerPowerUp>().GiveFlamer();
+             FlamethrowerMesh.SetActive(true);
+                PlasmagunmeshReady.SetActive(false);
+                shotgunmesh.SetActive(false);
+                defaultMachinegun.SetActive(false);
+                Debug.Log("I shot a flamer with a shotty!");
             }
 
 

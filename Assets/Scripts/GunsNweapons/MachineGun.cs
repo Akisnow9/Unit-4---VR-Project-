@@ -207,7 +207,7 @@ public class MachineGun : MonoBehaviour
                     {
                         hit.transform.GetComponent<FlameThrowerPowerUp>().GiveFlamer();
                         //gameObject.SetActive(false);
-                        //flamerReady.SetActive(true);
+                       /// flamerReady.SetActive(true);
                         //plasmagun.PlasmagunReady(true);
                         Debug.Log(" I shot a flamer");
                     }

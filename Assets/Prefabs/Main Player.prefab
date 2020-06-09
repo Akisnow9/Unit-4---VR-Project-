@@ -683,12 +683,15 @@ MonoBehaviour:
   damage: 2
   flames: {fileID: 4192051571717255810}
   ammoText: {fileID: 916812603459171172}
-  Flamermesh: {fileID: 4192051572784614194}
   ammoCount: 0
   effectsDisplayTime: 1
-  timeBetweenBullets: 0.01
+  timeBetweenBullets: 0.55
+  flamercanshoot: 0
   fireparticles: {fileID: 4076262090650640322}
   defaultMachinegun: {fileID: 114107612790628781}
+  PlasmagunmeshReady: {fileID: 4987672100375331553}
+  ShotgunmeshReady: {fileID: 114107611198470126}
+  Flamermesh: {fileID: 4192051572784614194}
 --- !u!82 &2038757340563292729
 AudioSource:
   m_ObjectHideFlags: 0
@@ -699,7 +702,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: d1fc1f64e2810db4d99cf62cb725aa7d, type: 3}
+  m_audioClip: {fileID: 8300000, guid: df5ef6deaf6d19845951573535bc8200, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -880,7 +883,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4197238757627366070
 Transform:
   m_ObjectHideFlags: 0
@@ -18944,11 +18947,11 @@ ParticleSystem:
     maxCollisionShapes: 256
     quality: 0
     voxelSize: 0.5
-    collisionMessages: 0
+    collisionMessages: 1
     collidesWithDynamic: 1
     interiorCollisions: 1
   TriggerModule:
-    enabled: 0
+    enabled: 1
     collisionShape0: {fileID: 0}
     collisionShape1: {fileID: 0}
     collisionShape2: {fileID: 0}
@@ -20052,7 +20055,7 @@ GameObject:
   - component: {fileID: 4188506859418481356}
   - component: {fileID: 4192051572784614195}
   m_Layer: 0
-  m_Name: mesh
+  m_Name: FlamethrowerMeshmesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -20606,7 +20609,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingHealth: 50
-  currentHealth: 100
+  currentHealth: 50
   healthSlider: {fileID: 0}
   damageImage: {fileID: 0}
   flashSpeed: 5
@@ -20692,6 +20695,7 @@ MonoBehaviour:
   shootRate: 0.2
   defaultMachinegun: {fileID: 114107612790628781}
   shotgunReady: {fileID: 114107611198470126}
+  flamethrowerReady: {fileID: 4192051572784614194}
   PlasmagunMesh: {fileID: 4987672100375331553}
   m_shotPrefab: {fileID: 136330, guid: 9a0c3383523899643a8d0661cfaca4e4, type: 3}
   ammoText: {fileID: 4987672100052224155}
@@ -21250,6 +21254,11 @@ PrefabInstance:
       propertyPath: playersFlamer
       value: 
       objectReference: {fileID: 2038757340563292732}
+    - target: {fileID: 2854319631108893905, guid: aae832ddc41ff5e47af8d6514956ed63,
+        type: 3}
+      propertyPath: FlamethrowerMesh
+      value: 
+      objectReference: {fileID: 4192051572784614194}
     - target: {fileID: 2854319631108893907, guid: aae832ddc41ff5e47af8d6514956ed63,
         type: 3}
       propertyPath: m_Name

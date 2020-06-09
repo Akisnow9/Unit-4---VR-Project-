@@ -11,16 +11,21 @@ using UnityEngine.UI;
         public float shootRate;
         private float m_shootRateTimeStamp;
 
-        //Referances to the guns
+        //Referances to the gun meshs
         public GameObject defaultMachinegun;
         public GameObject shotgunReady;
+    public GameObject flamethrowerReady;
+    
     //Sricpts and game Objects we want to prepare
         public GameObject PlasmagunMesh;
         //public bool PlasmagunReady = false;
 
     //Scripts and Game Objects we want to reset the ammo
     Shotgun shotgun;
+    FlameThrower2 flamer;
+    //Powerups we want to be to shoot
     ShotgunPowerup shotgunPU;
+    FlameThrowerPowerUp flamerPU;
 
     public GameObject m_shotPrefab;
         RaycastHit hit;
@@ -91,6 +96,7 @@ using UnityEngine.UI;
                
                 // shotgun.ammoCount = 0;
                 PlasmagunMesh.SetActive(true);
+
             }
          //   if (Combatadd == 1)
            // {
@@ -136,9 +142,21 @@ using UnityEngine.UI;
                 shotgunReady.SetActive(true);
             }
 
+            if (hit.transform.gameObject.tag == "Flamer")
+            {
+                ammoCount = 0;
+                hit.transform.GetComponent<FlameThrowerPowerUp>().GiveFlamer();
+                defaultMachinegun.SetActive(false);
+                flamethrowerReady.SetActive(true);
+                shotgunReady.SetActive(false);
+                Debug.Log("I blasted a flamer with a Plasmagun!");
 
-            
-               //destroys laser if it dosent hit anything
+
+            }
+
+
+
+                //destroys laser if it dosent hit anything
                 GameObject.Destroy(laser, 2f);
                 //damages enemy when we shoot them
                

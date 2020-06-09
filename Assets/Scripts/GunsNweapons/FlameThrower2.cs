@@ -21,7 +21,7 @@ using UnityEngine.UI;
     //stores referances of ammo text and clipText to diplay to show the player how much ammo he/she has
     public Text ammoText;
 
-    public GameObject Flamermesh;
+   
     //Stores referance to the enemyhealth to hurt or kill the enemy
     EnemyHealth enemyHealth;
     //EnemyMovement2 enemyMovement2;
@@ -55,15 +55,20 @@ using UnityEngine.UI;
     //Controls when to shoot
     private bool canShoot = true;
 
+    public bool flamercanshoot = false;
+
         //shows gun particles when gun is fired
          public ParticleSystem fireparticles;
 
     public GameObject defaultMachinegun;
+    public GameObject PlasmagunmeshReady;
+    public GameObject ShotgunmeshReady;
+    public GameObject Flamermesh;
 
-        // public Animation gunFire;
+    // public Animation gunFire;
 
-        //Sets up Referances
-        void Awake()
+    //Sets up Referances
+    void Awake()
     {
           fireparticles = GetComponentInChildren<ParticleSystem>();
         enemyHealth = GetComponent<EnemyHealth>();
@@ -133,20 +138,23 @@ using UnityEngine.UI;
                 timer = 0f;
                // flames.SetActive(true);
                 //if you are out of ammo in your clip, you cant fire and a sound will play
-                if (ammoCount == 1)
+                if (ammoCount == 0)
                 {
-                     fireparticles.Stop();
+                    flamercanshoot = false;
+                    fireparticles.Stop();
                     // clipempty.Play();
                     //flames.SetActive(false);
-                    // gameObject.SetActive(false);
-                    Flamermesh.SetActive(false);
+                   // gameObject.SetActive(false);
+                  
                    defaultMachinegun.SetActive(true);
-                      //  return;
+                  //  Flamermesh.SetActive(false);
+                    //  return;
                 }
                 else if (ammoCount >= 0)
                     {
                     defaultMachinegun.SetActive(false);
-                    Flamermesh.SetActive(true);
+                    //   Flamermesh.SetActive(true);
+                    flamercanshoot = true;
 
                     }
                 //Dectivates shooting if need too
@@ -154,6 +162,14 @@ using UnityEngine.UI;
                 {
 
                     return;
+                }
+                if (flamercanshoot == false)
+                {
+                    Flamermesh.SetActive(false);
+                }
+                if (flamercanshoot == true)
+                {
+                    Flamermesh.SetActive(true);
                 }
                     //plays audio and displays light when fired
                     if (Input.GetMouseButton(0))
@@ -219,4 +235,22 @@ using UnityEngine.UI;
         Debug.Log("I got flamer ammo");
         UpdateText();
     }
+/*
+    public void Getshotgun()
+    {
+
+        ammoCount = 0;
+        defaultMachinegun.SetActive(false);
+        ShotgunmeshReady.SetActive(true);
+        Flamermesh.SetActive(false);
+    }
+
+    public void GetPlasmagun()
+    {
+        ammoCount = 0;
+        defaultMachinegun.SetActive(false);
+        PlasmagunmeshReady.SetActive(true);
+        Flamermesh.SetActive(false);
+    }
+*/
 }

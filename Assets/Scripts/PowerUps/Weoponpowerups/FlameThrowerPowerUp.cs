@@ -18,6 +18,7 @@ public class FlameThrowerPowerUp : MonoBehaviour
 
     public int ammoreceived = 20;
 
+    public ParticleSystem fireeffect;
     // Start is called before the first frame update
     void Awake()
     {
@@ -40,4 +41,14 @@ public class FlameThrowerPowerUp : MonoBehaviour
         Debug.Log("I found a flamer");
         Destroy(gameObject);
     }
+    //Gives Ammo to player if player burns with a flamer
+   /* public void OnParticleCollision(GameObject other)
+    {
+    GameObject player = GameObject.FindGameObjectWithTag("Player");
+    GameObject playersFlamer = GameObject.FindGameObjectWithTag("PFlamer");
+    playersFlamer.GetComponent<FlameThrower2>().AmmoEarned(ammoreceived);
+    Debug.Log("I found more flamer ammo");
+    Destroy(gameObject);
+}
+*/
 }

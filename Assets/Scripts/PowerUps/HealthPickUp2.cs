@@ -43,6 +43,13 @@ using UnityEngine;
                 Destroy(gameObject);
               
             }
+    public void OnParticleCollision(GameObject other)
+    {
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        player.GetComponent<PlayerHealth>().HealthEarned(healthSupply);
+        Destroy(gameObject);
+        Debug.Log("I burned the healthkit");
+    }
         }
   //  }
 //}
