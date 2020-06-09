@@ -12,6 +12,8 @@ TagManager:
   - Pplasmagun
   - PFlamer
   - Flamer
+  - PMinigun
+  - Minigun
   layers:
   - Default
   - TransparentFX
