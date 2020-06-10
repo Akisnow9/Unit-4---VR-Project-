@@ -188,7 +188,7 @@ MonoBehaviour:
   Ehealth: 20
   Scorevalue: 10
   isburning: 0
-  firedamage: 5
+  firedamage: 2
   fireDOT: 1
   fireeffect: {fileID: 5954831821923730076}
   pickupPosition: {fileID: 7298195840808364645}

@@ -48,7 +48,7 @@ using UnityEngine.UI;
     FlameThrower2 flamer;
     Minigun minigun;
 
-    //referance to the players plasma gun to keep track of ammo
+    //referance to the players guns to keep track of ammo
     public GameObject playersPlasmagun;
     public GameObject playersFlamer;
     public GameObject playersMinigun;

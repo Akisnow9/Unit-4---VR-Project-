@@ -265,11 +265,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f454c81c2749e94fb0bdf362a92bf6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 1
+  damage: 3
   ammoText: {fileID: 454744601}
   ammoCount: 0
   effectsDisplayTime: 1
-  timeBetweenBullets: 0.02
+  timeBetweenBullets: 0.03
+  playershotgun: {fileID: 114107610974774184}
   defaultMachinegun: {fileID: 114107612790628781}
   shotgunReady: {fileID: 114107611198470126}
   Plasmagunready: {fileID: 4987672100375331553}
@@ -546,7 +547,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 1f813ee30cd53bb4eaec75198d84ee3b, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 538d2a8ed34d4cc4eba9f72a47a2056c, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -21926,15 +21927,21 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 2740986626086440827}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &114107610974774187 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2854319631108893904, guid: aae832ddc41ff5e47af8d6514956ed63,
-    type: 3}
-  m_PrefabInstance: {fileID: 2740986626086440827}
-  m_PrefabAsset: {fileID: 0}
 --- !u!82 &939270674018342459 stripped
 AudioSource:
   m_CorrespondingSourceObject: {fileID: 3098763945615595840, guid: aae832ddc41ff5e47af8d6514956ed63,
+    type: 3}
+  m_PrefabInstance: {fileID: 2740986626086440827}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &114107610974774184 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2854319631108893907, guid: aae832ddc41ff5e47af8d6514956ed63,
+    type: 3}
+  m_PrefabInstance: {fileID: 2740986626086440827}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &114107610974774187 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2854319631108893904, guid: aae832ddc41ff5e47af8d6514956ed63,
     type: 3}
   m_PrefabInstance: {fileID: 2740986626086440827}
   m_PrefabAsset: {fileID: 0}

@@ -64,8 +64,12 @@ using UnityEngine.UI;
     FlameThrower2 flameThrower;
     Minigun minigun;
 
+    //to fix shotgun bug
+
+    public GameObject playershotgun;
 
     //Referance to the PU scripts 
+    HealthPickUp2 healthPU;
     MinigunPowerUp minigunPU;
     ShotgunPowerup shotgunPU;
     PlasmagunPowerup PlasmagunPU;
@@ -87,6 +91,9 @@ using UnityEngine.UI;
             //  muzzleFlash = GetComponentInChildren<ParticleSystem>();
             enemyHealth = GetComponent<EnemyHealth>();
              gunAudio = GetComponent<AudioSource>();
+        shotgun = playershotgun.GetComponent<Shotgun>();
+        shotgunPU = GetComponent<ShotgunPowerup>();
+        PlasmagunPU = GetComponent<PlasmagunPowerup>();
         minigunPU = GetComponent<MinigunPowerUp>();
             // gunFire = GetComponentInChildren<Animation>();
 
@@ -205,6 +212,41 @@ using UnityEngine.UI;
                    // hit.transform.GetComponent<MinigunPowerUp>().GetMoreAmmo();
                     Debug.Log("I shot an ammo pack and got more minigun Ammo!");
                     }
+                    if (hit.transform.gameObject.tag == "Health")
+                {
+                    hit.transform.GetComponent<HealthPickUp2>().HealPlayer();
+                    Debug.Log("I shot an Healthkit!");
+                }
+                if (hit.transform.gameObject.tag == "Plasmagun")
+                {
+                    ammoCount = 0;
+                    hit.transform.GetComponent<PlasmagunPowerup>().GivePlasmagun();
+                    defaultMachinegun.SetActive(false);
+                    minigunReady.SetActive(false);
+                    Plasmagunready.SetActive(true);
+                    Debug.Log("I shot a plasmagun with minigun");
+                }
+
+                if (hit.transform.gameObject.tag == "Shotgun")
+                {
+                    ammoCount = 0;
+                    shotgun.ammoCount = 19;
+                    minigunReady.SetActive(false);
+                    defaultMachinegun.SetActive(false);
+                    shotgunReady.SetActive(true);
+                    Debug.Log("I shot a shotgun with a minigun");
+                }
+                if (hit.transform.gameObject.tag == "Flamer")
+                {
+                    ammoCount = 0;
+                    hit.transform.GetComponent<FlameThrowerPowerUp>().GiveFlamer();
+                    defaultMachinegun.SetActive(false);
+                    flamerReady.SetActive(true);
+                    minigunReady.SetActive(false);
+                    Debug.Log("I shot a flamer with a Minigun!");
+                }
+
+
 
 
             }
