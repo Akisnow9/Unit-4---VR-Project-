@@ -37,6 +37,7 @@ using UnityEngine.UI;
         public GameObject defaultMachinegun;
     public GameObject PlasmagunmeshReady;
     public GameObject FlamethrowerMesh;
+    public GameObject minigunMesh;
    
 
         public AudioSource shotgunstart;
@@ -45,10 +46,12 @@ using UnityEngine.UI;
     ShotgunPowerup shotgunPU;
     PlasmaGun plasmagun;
     FlameThrower2 flamer;
+    Minigun minigun;
 
     //referance to the players plasma gun to keep track of ammo
     public GameObject playersPlasmagun;
     public GameObject playersFlamer;
+    public GameObject playersMinigun;
         //referrance of camera to fire ray
         Camera cam;
 
@@ -63,6 +66,7 @@ using UnityEngine.UI;
         plasmagun = playersPlasmagun.GetComponent<PlasmaGun>();
         plasmagunPU = GetComponent<PlasmagunPowerup>();
         flamer = playersFlamer.GetComponent<FlameThrower2>();
+        minigun = playersMinigun.GetComponent<Minigun>();
 
             // gunFire = GetComponentInChildren<Animation>();
 
@@ -89,7 +93,7 @@ using UnityEngine.UI;
                 UpdateText();
                 Shoot();
             }
-        if (ammoCount == 0 && plasmagun.ammoCount == 0 && flamer.ammoCount == 0)
+        if (ammoCount == 0 && plasmagun.ammoCount == 0 && flamer.ammoCount == 0 && minigun.ammoCount == 0)
         {
             // muzzleFlash.Stop();
             // clipempty.Play();
@@ -97,8 +101,10 @@ using UnityEngine.UI;
             shotgunmesh.SetActive(false);        
             defaultMachinegun.SetActive(true);
             FlamethrowerMesh.SetActive(false);
-            // return;
-        }
+            minigunMesh.SetActive(false);
+
+    // return;
+}
         else if (ammoCount >= 0 && plasmagun.ammoCount == 0 && flamer.ammoCount == 0)
         {
             Shotgunready = true;

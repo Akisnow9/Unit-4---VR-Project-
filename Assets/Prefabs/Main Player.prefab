@@ -133,13 +133,14 @@ GameObject:
   m_Component:
   - component: {fileID: 419909134}
   - component: {fileID: 419909135}
+  - component: {fileID: 1741505378}
   m_Layer: 0
   m_Name: Minigun
   m_TagString: PMinigun
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &419909134
 Transform:
   m_ObjectHideFlags: 0
@@ -166,10 +167,10 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 06ee7f6610c0ec947a5cfe4c25874093, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 92e6438ea57c28b45b80917e453ea051, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
-  m_Pitch: 1
+  m_Volume: 0.5
+  m_Pitch: 1.13
   Loop: 0
   Mute: 0
   Spatialize: 0
@@ -252,6 +253,28 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1741505378
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 419909133}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f454c81c2749e94fb0bdf362a92bf6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 1
+  ammoText: {fileID: 454744601}
+  ammoCount: 0
+  effectsDisplayTime: 1
+  timeBetweenBullets: 0.02
+  defaultMachinegun: {fileID: 114107612790628781}
+  shotgunReady: {fileID: 114107611198470126}
+  Plasmagunready: {fileID: 4987672100375331553}
+  flamerReady: {fileID: 4192051572784614194}
+  minigunReady: {fileID: 1908773329}
 --- !u!1 &430931020
 GameObject:
   m_ObjectHideFlags: 0
@@ -449,7 +472,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1908773330
 Transform:
   m_ObjectHideFlags: 0
@@ -492,7 +515,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d48adde300a48c84eba75aa78ba291e4, type: 2}
+  - {fileID: 2100000, guid: 7ee549d8b8c7deb4fb75a82b31f189d0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1014,6 +1037,7 @@ MonoBehaviour:
   shotgunReady: {fileID: 114107611198470126}
   Plasmagunready: {fileID: 4987672099687629377}
   flamerReady: {fileID: 2038757340563292732}
+  minigunReady: {fileID: 1908773329}
   PlayersPlasmagun: {fileID: 4987672099687629377}
   effectsDisplayTime: 0
   timeBetweenBullets: 0.2
@@ -21869,6 +21893,16 @@ PrefabInstance:
       propertyPath: FlamethrowerMesh
       value: 
       objectReference: {fileID: 4192051572784614194}
+    - target: {fileID: 2854319631108893905, guid: aae832ddc41ff5e47af8d6514956ed63,
+        type: 3}
+      propertyPath: minigunMesh
+      value: 
+      objectReference: {fileID: 1908773329}
+    - target: {fileID: 2854319631108893905, guid: aae832ddc41ff5e47af8d6514956ed63,
+        type: 3}
+      propertyPath: playersMinigun
+      value: 
+      objectReference: {fileID: 419909133}
     - target: {fileID: 2854319631108893907, guid: aae832ddc41ff5e47af8d6514956ed63,
         type: 3}
       propertyPath: m_Name
@@ -21886,15 +21920,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aae832ddc41ff5e47af8d6514956ed63, type: 3}
---- !u!4 &114107610974774187 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2854319631108893904, guid: aae832ddc41ff5e47af8d6514956ed63,
-    type: 3}
-  m_PrefabInstance: {fileID: 2740986626086440827}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &114107611198470126 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2854319631154133141, guid: aae832ddc41ff5e47af8d6514956ed63,
+    type: 3}
+  m_PrefabInstance: {fileID: 2740986626086440827}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &114107610974774187 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2854319631108893904, guid: aae832ddc41ff5e47af8d6514956ed63,
     type: 3}
   m_PrefabInstance: {fileID: 2740986626086440827}
   m_PrefabAsset: {fileID: 0}

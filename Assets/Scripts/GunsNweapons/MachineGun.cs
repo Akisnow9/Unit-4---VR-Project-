@@ -2,9 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
-namespace UnityStandardAssets.Characters.FirstPerson
-{ 
 public class MachineGun : MonoBehaviour
 {
         //Displays marker or blood depening where the player has shot
@@ -32,12 +29,14 @@ public class MachineGun : MonoBehaviour
         ShotgunPowerup shotgunPU;
         PlasmagunPowerup plasmagunPU;
         FlameThrowerPowerUp flamerPU;
+        MinigunPowerUp minigunPU;
 
 
         //Referance to the players weopon meshs to be ready
         public GameObject shotgunReady;
         public GameObject Plasmagunready;
         public GameObject flamerReady;
+        public GameObject minigunReady;
 
         //This list the components to the plasam gun
         PlasmaGun plasmagun;
@@ -82,9 +81,8 @@ public class MachineGun : MonoBehaviour
          gunAudio = GetComponent<AudioSource>();
          shotgunPU = GetComponent<ShotgunPowerup>();
             plasmagunPU = GetComponent<PlasmagunPowerup>();
-
             plasmagun = PlayersPlasmagun.GetComponent<PlasmaGun>();
-
+            minigunPU = GetComponent<MinigunPowerUp>();
    
         // gunFire = GetComponentInChildren<Animation>();
        
@@ -211,6 +209,13 @@ public class MachineGun : MonoBehaviour
                         //plasmagun.PlasmagunReady(true);
                         Debug.Log(" I shot a flamer");
                     }
+                if (hit.transform.gameObject.tag == "Minigun")
+                {
+                    gameObject.SetActive(false);
+                    minigunReady.SetActive(true);
+                    hit.transform.GetComponent<MinigunPowerUp>().GiveMinigun();
+                    Debug.Log("I got a minigun!");
+                }
 
 
 
@@ -261,4 +266,4 @@ public class MachineGun : MonoBehaviour
    // }
 
 }
-}
+

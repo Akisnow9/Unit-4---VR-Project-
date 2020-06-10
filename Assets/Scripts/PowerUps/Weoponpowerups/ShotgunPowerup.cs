@@ -6,7 +6,7 @@ public class ShotgunPowerup : MonoBehaviour
 {
     //Referance to the shotgun script
     Shotgun shotgun;
-    FlameThrower2 flamer;
+    
     //referance to the player
    // public GameObject player;
 
@@ -18,7 +18,7 @@ public class ShotgunPowerup : MonoBehaviour
 
     public int ammoreceived = 20;
 
-    public int Removeflamerammo = 0;
+    
     //Referance to players shotgun (temporaliry unactive)
     public GameObject playersShotgun;
 
@@ -29,7 +29,7 @@ public class ShotgunPowerup : MonoBehaviour
     void Awake()
     {
         shotgun = GetComponent<Shotgun>();
-        flamer = GetComponent<FlameThrower2>();
+        
     }
 
     //Rotates the object around until collided

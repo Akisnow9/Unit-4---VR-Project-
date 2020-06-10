@@ -3,13 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace UnityStandardAssets.Characters.FirstPerson
-{
-
     public class Minigun : MonoBehaviour
 {
-        public GameObject defaultMachinegun;
-
         //Displays marker or blood depening where the player has shot
         //  public GameObject raycastMarker = null;
         // public GameObject Blood = null;
@@ -58,20 +53,44 @@ namespace UnityStandardAssets.Characters.FirstPerson
         //Controls when to shoot
         private bool canShoot = true;
 
-        //shows gun particles when gun is fired
-        // public ParticleSystem muzzleFlash;
+    //shows gun particles when gun is fired
+    // public ParticleSystem muzzleFlash;
 
-        // public Animation gunFire;
+    // public Animation gunFire;
 
-        
+    //Referance to weopons to reset ammo
+    Shotgun shotgun;
+    PlasmaGun plasmagun;
+    FlameThrower2 flameThrower;
+    Minigun minigun;
 
-        //Sets up Referances
-        void Awake()
+
+    //Referance to the PU scripts 
+    MinigunPowerUp minigunPU;
+    ShotgunPowerup shotgunPU;
+    PlasmagunPowerup PlasmagunPU;
+    FlameThrowerPowerUp flamerPU;
+
+
+    //Referance to the players weopon meshs to be ready
+    public GameObject defaultMachinegun;
+    public GameObject shotgunReady;
+    public GameObject Plasmagunready;
+    public GameObject flamerReady;
+    public GameObject minigunReady;
+
+
+
+    //Sets up Referances
+    void Awake()
         {
             //  muzzleFlash = GetComponentInChildren<ParticleSystem>();
             enemyHealth = GetComponent<EnemyHealth>();
              gunAudio = GetComponent<AudioSource>();
+        minigunPU = GetComponent<MinigunPowerUp>();
             // gunFire = GetComponentInChildren<Animation>();
+
+
 
         }
 
@@ -79,6 +98,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         void Start()
         {
             UpdateText();
+        minigunReady.SetActive(false);
         }
         //Resets the shooting ready for the next fire
         private void ResetShooting()
@@ -133,19 +153,25 @@ namespace UnityStandardAssets.Characters.FirstPerson
                   } */
                 //Controls the fire rate of the gun
                 timer += Time.deltaTime;
-                if (Input.GetMouseButton(0) && timer >= timeBetweenBullets && ammoCount >= 0)
+                if (Input.GetMouseButton(0) && timer >= timeBetweenBullets && ammoCount > 0)
                 {
                     timer = 0f;
 
-                    //if you are out of ammo in your clip, you cant fire and a sound will play
-                    if (ammoCount <= 0)
+                //if you are out of ammo in your clip, you cant fire and a sound will play
+                if (ammoCount == 0)
+                {
+                    // muzzleFlash.Stop();
+                    // clipempty.Play();
+                    gameObject.SetActive(false);
+                    minigunReady.SetActive(true);
+                }
+                // return;
+                else if ( ammoCount >= 0)
                     {
-                        // muzzleFlash.Stop();
-                        // clipempty.Play();
-                        gameObject.SetActive(false);
-                        defaultMachinegun.SetActive(true);
-                        return;
-                    }
+                    minigunReady.SetActive(true);
+
+                }
+                    
                     //Dectivates shooting if need too
                     if (canShoot == false)
                     {
@@ -174,8 +200,14 @@ namespace UnityStandardAssets.Characters.FirstPerson
                         hit.transform.GetComponent<EnemyHealth>().TakeDamage(damage);
                         Debug.Log("I shot an enemy with a minigun!");
                     }
+                     if (hit.transform.gameObject.tag == "Minigun")
+                    {
+                   // hit.transform.GetComponent<MinigunPowerUp>().GetMoreAmmo();
+                    Debug.Log("I shot an ammo pack and got more minigun Ammo!");
+                    }
 
-                }
+
+            }
                 //If not firing, dont display the effects
                 else if (Input.GetMouseButtonUp(0))
                 {
@@ -205,12 +237,12 @@ namespace UnityStandardAssets.Characters.FirstPerson
         }
 
         //a function used to gain ammo when the player picks up ammo
-     //   public void AmmoEarned(int amount)
-     //   {
-     //       ammoCount += amount;
+        public void AmmoEarned(int amount)
+       {
+           ammoCount += amount;
             //  ReloadSound.Play();
-     //       UpdateText();
-     //   }
+          UpdateText();
+      }
     }
-}
+
 
