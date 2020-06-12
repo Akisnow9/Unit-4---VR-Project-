@@ -48,8 +48,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.6
-  ammogiven: 40
-  ammoreceived: 22
+  ammogiven: 20
+  ammoreceived: 12
   playersShotgun: {fileID: 0}
   fireeffect: {fileID: 0}
 --- !u!54 &6796452856756497522

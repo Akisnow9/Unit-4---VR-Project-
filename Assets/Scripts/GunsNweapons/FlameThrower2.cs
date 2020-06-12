@@ -59,6 +59,7 @@ using UnityEngine.UI;
 
         //shows gun particles when gun is fired
          public ParticleSystem fireparticles;
+        public GameObject FireEffects;
 
     public GameObject defaultMachinegun;
     public GameObject PlasmagunmeshReady;
@@ -142,10 +143,12 @@ using UnityEngine.UI;
                 {
                     flamercanshoot = false;
                     fireparticles.Stop();
+                    FireEffects.SetActive(false);
+
                     // clipempty.Play();
                     //flames.SetActive(false);
-                   // gameObject.SetActive(false);
-                  
+                    // gameObject.SetActive(false);
+                    StopMuzzleFlash();
                    defaultMachinegun.SetActive(true);
                   //  Flamermesh.SetActive(false);
                     //  return;
@@ -155,8 +158,10 @@ using UnityEngine.UI;
                     defaultMachinegun.SetActive(false);
                     //   Flamermesh.SetActive(true);
                     flamercanshoot = true;
-
+                   
                     }
+               
+         
                 //Dectivates shooting if need too
                 if (canShoot == false)
                 {
@@ -166,10 +171,12 @@ using UnityEngine.UI;
                 if (flamercanshoot == false)
                 {
                     Flamermesh.SetActive(false);
+                    StopMuzzleFlash();
                 }
                 if (flamercanshoot == true)
                 {
                     Flamermesh.SetActive(true);
+                    
                 }
                     //plays audio and displays light when fired
                     if (Input.GetMouseButton(0))
@@ -201,8 +208,9 @@ using UnityEngine.UI;
             //If not firing, dont display the effects
             else if (Input.GetMouseButtonUp(0))
             {
-                 fireparticles.Stop();
+                fireparticles.Stop();
                 gunAudio.Stop();
+                StopMuzzleFlash();
                 // gunLight.enabled = false;
 
             }
@@ -211,6 +219,15 @@ using UnityEngine.UI;
             {
                 DisableEffects();
             }
+        }
+        if (ammoCount == 0 && flamercanshoot == true)
+        {
+            flamercanshoot = false;
+            Debug.Log("Your not suppose to fire!");
+            StopMuzzleFlash();
+            gunAudio.Stop();
+
+
         }
         //displays a ray showing you where you have shot
         Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward * distanceOfRay);

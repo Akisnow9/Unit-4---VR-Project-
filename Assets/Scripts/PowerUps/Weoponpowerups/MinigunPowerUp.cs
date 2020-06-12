@@ -36,12 +36,12 @@ public class MinigunPowerUp : MonoBehaviour
         Debug.Log("I shot a minigun!");
         Destroy(gameObject);
     }
-   // public void GetMoreAmmo()
-  //  {
-   //     GameObject player = GameObject.FindGameObjectWithTag("Player");
-   //     GameObject playersMinigun = GameObject.FindGameObjectWithTag("PMinigun");
-    //    playersMinigun.GetComponent<Minigun>().AmmoEarned(ammoreceived);
-    //    Debug.Log("I got more ammo!");
-    //    Destroy(gameObject);
-   // }
+    public void GetMoreAmmo()
+    {
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+       GameObject playersMinigun = GameObject.FindGameObjectWithTag("PMinigun");
+        playersMinigun.GetComponent<Minigun>().AmmoEarned(ammoreceived);
+       Debug.Log("I got more ammo!");
+       Destroy(gameObject);
+    }
 }

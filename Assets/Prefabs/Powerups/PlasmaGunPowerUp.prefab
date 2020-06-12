@@ -78,7 +78,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0.06
   ammogiven: 20
-  ammoreceived: 5
+  ammoreceived: 10
   fireeffect: {fileID: 0}
 --- !u!114 &1813941529
 MonoBehaviour:

@@ -14,7 +14,8 @@ using UnityEngine.UI;
         //Referances to the gun meshs
         public GameObject defaultMachinegun;
         public GameObject shotgunReady;
-    public GameObject flamethrowerReady;
+        public GameObject flamethrowerReady;
+        public GameObject MinigunReady;
     
     //Sricpts and game Objects we want to prepare
         public GameObject PlasmagunMesh;
@@ -150,6 +151,18 @@ using UnityEngine.UI;
                 flamethrowerReady.SetActive(true);
                 shotgunReady.SetActive(false);
                 Debug.Log("I blasted a flamer with a Plasmagun!");
+            }
+
+            if (hit.transform.gameObject.tag == "Minigun")
+            {
+                ammoCount = 0;
+                hit.transform.GetComponent<MinigunPowerUp>().GiveMinigun();
+                defaultMachinegun.SetActive(false);
+                MinigunReady.SetActive(true);
+                flamethrowerReady.SetActive(false);
+                shotgunReady.SetActive(false);
+                Debug.Log("I blasted a Minigun with a Plasmagun");
+
 
 
             }

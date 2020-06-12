@@ -208,6 +208,11 @@ MonoBehaviour:
   - {fileID: 2515730910113588256, guid: 848239eedfc7aa142aab72088f354e65, type: 3}
   - {fileID: 1617971584764733566, guid: 13e12e096b6ff77478ea5dd7bca2dd83, type: 3}
   - {fileID: 1617971584764733566, guid: 13e12e096b6ff77478ea5dd7bca2dd83, type: 3}
+  - {fileID: 1617971584764733566, guid: 13e12e096b6ff77478ea5dd7bca2dd83, type: 3}
+  - {fileID: 4294258400410086279, guid: e6ea31565f91b7444b66a63a9771826c, type: 3}
+  - {fileID: 1617971584764733566, guid: 13e12e096b6ff77478ea5dd7bca2dd83, type: 3}
+  - {fileID: 1617971584764733566, guid: 13e12e096b6ff77478ea5dd7bca2dd83, type: 3}
+  - {fileID: 1617971584764733566, guid: 13e12e096b6ff77478ea5dd7bca2dd83, type: 3}
 --- !u!195 &7037892476970779586
 NavMeshAgent:
   m_ObjectHideFlags: 0

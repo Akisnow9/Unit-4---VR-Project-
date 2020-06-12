@@ -6,11 +6,11 @@ public class ShotgunPowerup : MonoBehaviour
 {
     //Referance to the shotgun script
     Shotgun shotgun;
-    
-    //referance to the player
-   // public GameObject player;
 
-   
+    //referance to the player
+    // public GameObject player;
+
+
     //The speed that the powerup rotates until picked up
     public float speed;
 
@@ -18,7 +18,7 @@ public class ShotgunPowerup : MonoBehaviour
 
     public int ammoreceived = 20;
 
-    
+
     //Referance to players shotgun (temporaliry unactive)
     public GameObject playersShotgun;
 
@@ -29,7 +29,7 @@ public class ShotgunPowerup : MonoBehaviour
     void Awake()
     {
         shotgun = GetComponent<Shotgun>();
-        
+
     }
 
     //Rotates the object around until collided
@@ -55,6 +55,11 @@ public class ShotgunPowerup : MonoBehaviour
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         GameObject playersShotgun = GameObject.FindGameObjectWithTag("Pshotgun");
         playersShotgun.GetComponent<Shotgun>().AmmoPickup(ammoreceived);
+        Destroy(gameObject);
+    }
+    //this void is only for the minigun to fix a bug
+    public void Destroyonfire()
+    {
         Destroy(gameObject);
     }
     /*

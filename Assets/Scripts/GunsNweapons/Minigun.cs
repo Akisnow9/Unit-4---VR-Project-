@@ -47,6 +47,8 @@ using UnityEngine.UI;
         //shows effects in certain amount of time
         public float effectsDisplayTime;
 
+        
+
         //controls how quickly the gun can fire
         public float timeBetweenBullets = 5f;
 
@@ -95,6 +97,7 @@ using UnityEngine.UI;
         shotgunPU = GetComponent<ShotgunPowerup>();
         PlasmagunPU = GetComponent<PlasmagunPowerup>();
         minigunPU = GetComponent<MinigunPowerUp>();
+       
             // gunFire = GetComponentInChildren<Animation>();
 
 
@@ -209,7 +212,7 @@ using UnityEngine.UI;
                     }
                      if (hit.transform.gameObject.tag == "Minigun")
                     {
-                   // hit.transform.GetComponent<MinigunPowerUp>().GetMoreAmmo();
+                    hit.transform.GetComponent<MinigunPowerUp>().GetMoreAmmo();
                     Debug.Log("I shot an ammo pack and got more minigun Ammo!");
                     }
                     if (hit.transform.gameObject.tag == "Health")
@@ -230,8 +233,12 @@ using UnityEngine.UI;
                 if (hit.transform.gameObject.tag == "Shotgun")
                 {
                     ammoCount = 0;
-                    shotgun.ammoCount = 19;
+                    
+                    shotgun.ammoCount = 20;
+                    playershotgun.GetComponent<Shotgun>().UpdateText();
                     minigunReady.SetActive(false);
+                    shotgunReady.SetActive(true);
+                    hit.transform.GetComponent<ShotgunPowerup>().Destroyonfire();
                     defaultMachinegun.SetActive(false);
                     shotgunReady.SetActive(true);
                     Debug.Log("I shot a shotgun with a minigun");
