@@ -121,7 +121,8 @@ public class Shotgun : MonoBehaviour
         RaycastHit hit_1;
         RaycastHit hit_2;
         RaycastHit hit_3;
-       
+        RaycastHit hit_4;
+        RaycastHit hit_5;    
 
         GameObject muzzleInstance = Instantiate(muzzle, spawnPoint.position, spawnPoint.localRotation);
         muzzleInstance.transform.parent = spawnPoint;
@@ -134,7 +135,7 @@ public class Shotgun : MonoBehaviour
             if (hit.transform.gameObject.tag == "Enemy")
             {
                 hit.transform.GetComponent<EnemyHealth>().TakeDamage(damage);
-               
+
                 Debug.Log("I shot an enemy with a shotgun!");
             }
             //  else if (hit.transform.gameObject.tag != "Enemy")
@@ -187,7 +188,7 @@ public class Shotgun : MonoBehaviour
 
 
             //Bullets that goes forward
-            if (Physics.Raycast(cam.transform.position, cam.transform.forward + new Vector3(-2f, 0f, 0f), out hit_1, distance))
+            if (Physics.Raycast(cam.transform.position, cam.transform.forward + new Vector3(-1f, 0f, 0f), out hit_1, distance))
             {
                 Instantiate(impact, hit_1.point, Quaternion.LookRotation(hit_1.normal));
                 {
@@ -219,23 +220,56 @@ public class Shotgun : MonoBehaviour
             }
 
             //Bullets that goes down
-            if (Physics.Raycast(cam.transform.position, cam.transform.forward + new Vector3(2f, 0f, 0f), out hit_3, distance))
+            if (Physics.Raycast(cam.transform.position, cam.transform.forward + new Vector3(1f, 0f, 0f), out hit_3, distance))
             {
                 Instantiate(impact, hit_3.point, Quaternion.LookRotation(hit_3.normal));
-                if (hit_3.transform.gameObject.tag == "Enemy")
                 {
-                    hit_3.transform.GetComponent<EnemyHealth>().TakeDamage(damage);
-                    Debug.Log("I shot an enemy with a shotgun!");
+                    if (hit_3.transform.gameObject.tag == "Enemy")
+                    {
+                        hit_3.transform.GetComponent<EnemyHealth>().TakeDamage(damage);
+                        Debug.Log("I shot an enemy with a shotgun!");
+                    }
+                    //  else if (hit_3.transform.gameObject.tag != "Enemy")
+                    //   {
+                    //     return;
+                    // }
+                    Debug.Log("bang 3");
                 }
-                //  else if (hit_3.transform.gameObject.tag != "Enemy")
-                //   {
-                //     return;
-                // }
-                Debug.Log("bang 3");
-            }  
+            }
+
+            if (Physics.Raycast(cam.transform.position, cam.transform.forward + new Vector3(-1f, 0f, 0f), out hit_4, distance))
+            {
+                Instantiate(impact, hit_4.point, Quaternion.LookRotation(hit_4.normal));
+                {
+                    if (hit_4.transform.gameObject.tag == "Enemy")
+                    {
+                        hit_4.transform.GetComponent<EnemyHealth>().TakeDamage(damage);
+                        Debug.Log("I shot an enemy with a shotgun!");
+                    }
+                    Debug.Log("bang 4");
+                }
+            }
+
+
+            if (Physics.Raycast(cam.transform.position, cam.transform.forward + new Vector3(1f, 0f, 0f), out hit_5, distance))
+            {
+                Instantiate(impact, hit_5.point, Quaternion.LookRotation(hit_5.normal));
+                {
+                    if (hit_5.transform.gameObject.tag == "Enemy")
+                    {
+                        hit_5.transform.GetComponent<EnemyHealth>().TakeDamage(damage);
+                        Debug.Log("I shot an enemy with a shotgun!");
+                    }
+                    //  else if (hit_2.transform.gameObject.tag != "Enemy")
+                    //  {
+                    //     return;
+                    // }
+                    Debug.Log("bang 5");
+                }
+            }
         }
     }
-
+        
             public void AmmoPickup(int amount)
             {
                 ammoCount += amount;
@@ -244,5 +278,6 @@ public class Shotgun : MonoBehaviour
                 Debug.Log("I got shotgun ammo!");
             }
         }
+
     
 
