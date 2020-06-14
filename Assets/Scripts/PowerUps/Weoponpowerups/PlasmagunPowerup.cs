@@ -40,7 +40,7 @@ public class PlasmagunPowerup : MonoBehaviour
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         GameObject playersPlasmagun = GameObject.FindGameObjectWithTag("Pplasmagun");
         playersPlasmagun.GetComponent<PlasmaGun>().AmmoPickup(ammogiven);
-        Debug.Log("I shot the Plasmagun!");
+     //   Debug.Log("I shot the Plasmagun!");
 
         Destroy(gameObject);
     }
@@ -49,7 +49,7 @@ public class PlasmagunPowerup : MonoBehaviour
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         GameObject playersPlasmagun = GameObject.FindGameObjectWithTag("Pplasmagun");
         playersPlasmagun.GetComponent<PlasmaGun>().AmmoPickup(ammoreceived);
-        Debug.Log("I got evan more plasma ammo!");
+      //  Debug.Log("I got evan more plasma ammo!");
         Destroy(gameObject);
     }
    /* public void OnParticleCollision(GameObject other)

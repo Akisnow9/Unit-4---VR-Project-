@@ -16,7 +16,7 @@ using UnityEngine.UI;
         public GameObject shotgunReady;
         public GameObject flamethrowerReady;
         public GameObject MinigunReady;
-    
+        
     //Sricpts and game Objects we want to prepare
         public GameObject PlasmagunMesh;
         //public bool PlasmagunReady = false;
@@ -122,7 +122,7 @@ using UnityEngine.UI;
                 if (hit.transform.gameObject.tag == "Enemy")
                 {
                     hit.transform.GetComponent<EnemyHealth>().TakeDamage(damage);
-                    Debug.Log("I shot an enemy with a plasma gun!");
+                  //  Debug.Log("I shot an enemy with a plasma gun!");
                 }
 
                 if( hit.transform.gameObject.tag == "Plasmagun")
@@ -133,7 +133,7 @@ using UnityEngine.UI;
             if (hit.transform.gameObject.tag == "Health")
                 {
                 hit.transform.GetComponent<HealthPickUp2>().HealPlayer();
-                Debug.Log("I shot the health kit with a plasma gun");
+              //  Debug.Log("I shot the health kit with a plasma gun");
                 }
             if (hit.transform.gameObject.tag == "Shotgun")
             {
@@ -150,7 +150,7 @@ using UnityEngine.UI;
                 defaultMachinegun.SetActive(false);
                 flamethrowerReady.SetActive(true);
                 shotgunReady.SetActive(false);
-                Debug.Log("I blasted a flamer with a Plasmagun!");
+              //  Debug.Log("I blasted a flamer with a Plasmagun!");
             }
 
             if (hit.transform.gameObject.tag == "Minigun")
@@ -161,7 +161,7 @@ using UnityEngine.UI;
                 MinigunReady.SetActive(true);
                 flamethrowerReady.SetActive(false);
                 shotgunReady.SetActive(false);
-                Debug.Log("I blasted a Minigun with a Plasmagun");
+              //  Debug.Log("I blasted a Minigun with a Plasmagun");
 
 
 
@@ -178,7 +178,7 @@ using UnityEngine.UI;
 public void AmmoPickup (int amount)
 {
     ammoCount += amount;
-        Debug.Log("I got Plasma ammo");
+       // Debug.Log("I got Plasma ammo");
     UpdateText();
 }
     }

@@ -10,7 +10,7 @@ using UnityEngine.UI;
         public int startingHealth = 100;
 
         //gets referance when player is hurt
-      //  public GameObject playerhurt;
+        public GameObject playerhurt;
 
         // The current health the player has.
         public int currentHealth;
@@ -107,8 +107,9 @@ using UnityEngine.UI;
 
             // Set the health bar's value to the current health.
             healthSlider.value = currentHealth;
-            // Play the hurt sound effect.
-            //  playerAudio.Play();
+            
+        // Play the hurt sound effect.
+            // playerAudio.Play();
 
             // If the player has lost all it's health and the death flag hasn't been set yet...
             if (currentHealth <= 0 && !isDead)
