@@ -9,8 +9,9 @@ using UnityEngine.UI;
         // The amount of health the player starts the game with.
         public int startingHealth = 100;
 
-        //gets referance when player is hurt
-        public GameObject playerhurt;
+        //gets referance when player is hurt and dead
+        public AudioSource playerhurt;
+        public AudioSource playerdead;
 
         // The current health the player has.
         public int currentHealth;
@@ -62,13 +63,15 @@ using UnityEngine.UI;
 
         void Awake()
         {
-            // Setting up the references.
+        // Setting up the references.
 
-          //  gunLight = GetComponentInChildren<GunLight>();
-          //  fireGrenade = GetComponentInChildren<FireGrenade>();
-          //  playerMovement = GetComponent<CharacterController>();
-          //  playerShooting = GetComponentInChildren<PlayerShooting>();
-            timer = GetComponent<Timer>();
+        //  gunLight = GetComponentInChildren<GunLight>();
+        //  fireGrenade = GetComponentInChildren<FireGrenade>();
+        //  playerMovement = GetComponent<CharacterController>();
+        //  playerShooting = GetComponentInChildren<PlayerShooting>();
+        playerhurt = GetComponent<AudioSource>();
+        playerdead = GetComponent<AudioSource>();
+        timer = GetComponent<Timer>();
             currentHealth = startingHealth;
             
         }
@@ -109,7 +112,7 @@ using UnityEngine.UI;
             healthSlider.value = currentHealth;
             
         // Play the hurt sound effect.
-            // playerAudio.Play();
+            playerhurt.Play();
 
             // If the player has lost all it's health and the death flag hasn't been set yet...
             if (currentHealth <= 0 && !isDead)
@@ -125,7 +128,8 @@ using UnityEngine.UI;
         // Set the death flag so this function won't be called again.
         guns.SetActive(false);
             isDead = true;
-            Debug.Log("PLayer is dead");
+            playerdead.Play();
+          //  Debug.Log("PLayer is dead");
             //Disables muzzleflash when player is dead
           //  playerShooting.StopMuzzleFlash();
             // Turn off any remaining shooting effects.

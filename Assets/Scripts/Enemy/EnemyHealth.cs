@@ -37,7 +37,7 @@ public class EnemyHealth : MonoBehaviour
     {
         if (isburning == true)
         {
-
+            enemyhurt.Play();
             Ehealth -= fireDOT;
             // Debug.Log("Im burning!");
         }
@@ -88,6 +88,7 @@ public class EnemyHealth : MonoBehaviour
         isburning = true;
         fireeffect.Play();
         Ehealth -= firedamage;
+        enemyhurt.Play();
         //  Debug.Log("A particle hit me!");
         if (Ehealth <= 0f)
         {

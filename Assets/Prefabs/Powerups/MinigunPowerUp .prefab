@@ -90,7 +90,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.33
-  ammogiven: 500
+  ammogiven: 200
   ammoreceived: 100
 --- !u!1 &4444589798656528424
 GameObject:
