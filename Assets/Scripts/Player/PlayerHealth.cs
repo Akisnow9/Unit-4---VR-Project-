@@ -12,7 +12,7 @@ using UnityEngine.UI;
         //gets referance when player is hurt and dead
         public AudioSource playerhurt;
         public AudioSource playerdead;
-
+       
         // The current health the player has.
         public int currentHealth;
 
@@ -72,6 +72,7 @@ using UnityEngine.UI;
         playerhurt = GetComponent<AudioSource>();
         playerdead = GetComponent<AudioSource>();
         timer = GetComponent<Timer>();
+       
             currentHealth = startingHealth;
             
         }
@@ -129,6 +130,7 @@ using UnityEngine.UI;
         guns.SetActive(false);
             isDead = true;
             playerdead.Play();
+           
           //  Debug.Log("PLayer is dead");
             //Disables muzzleflash when player is dead
           //  playerShooting.StopMuzzleFlash();
