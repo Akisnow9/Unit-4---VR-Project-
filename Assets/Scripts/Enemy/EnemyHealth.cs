@@ -71,6 +71,7 @@ public class EnemyHealth : MonoBehaviour
     {
          Instantiate(blood, gameObject.transform.position, transform.rotation);
         Ehealth -= amount;
+        ScoringSystem.score += Scorevalue;
         enemyhurt.Play();
         //If the enemys health is 0......
         //  if (Ehealth <= 0f && !HasExploded)
@@ -105,7 +106,7 @@ public class EnemyHealth : MonoBehaviour
     //This function also gives players points to the scoreValue
     void Die()
     {
-        ScoreManager.score += Scorevalue;
+       // ScoreManager.score += Scorevalue;
         //Instantiate(Explosivo, gameObject.transform.position, transform.rotation);
         int a = Random.Range(0, SpawnPickupPrefabs.Length);
         Rigidbody spawnPickupInstance;

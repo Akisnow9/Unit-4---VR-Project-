@@ -12,6 +12,7 @@ using UnityEngine.UI;
         //gets referance when player is hurt and dead
         public AudioSource playerhurt;
         public AudioSource playerdead;
+    ScoringSystem scoringsystem;
        
         // The current health the player has.
         public int currentHealth;
@@ -72,6 +73,7 @@ using UnityEngine.UI;
         playerhurt = GetComponent<AudioSource>();
         playerdead = GetComponent<AudioSource>();
         timer = GetComponent<Timer>();
+        scoringsystem = GetComponent<ScoringSystem>();
        
             currentHealth = startingHealth;
             
@@ -129,6 +131,7 @@ using UnityEngine.UI;
         // Set the death flag so this function won't be called again.
         guns.SetActive(false);
             isDead = true;
+        ScoringSystem.end = true;
             playerdead.Play();
            
           //  Debug.Log("PLayer is dead");
