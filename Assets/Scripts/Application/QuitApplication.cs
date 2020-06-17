@@ -5,7 +5,13 @@ using UnityEngine;
 public class QuitApplication : MonoBehaviour
 {
     // Start is called before the first frame update
-     public void exit()
+
+    private void Update()
+    {
+        exit();
+    }
+
+    public void exit()
     {
         
         Application.Quit(); 
