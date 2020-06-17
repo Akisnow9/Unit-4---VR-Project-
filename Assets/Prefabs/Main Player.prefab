@@ -89,7 +89,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 7ee549d8b8c7deb4fb75a82b31f189d0, type: 2}
+  - {fileID: 2100000, guid: f95feaec1975ceb42a20bcaf41f3fa7b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -516,7 +516,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 7ee549d8b8c7deb4fb75a82b31f189d0, type: 2}
+  - {fileID: 2100000, guid: f95feaec1975ceb42a20bcaf41f3fa7b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -693,7 +693,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 7ee549d8b8c7deb4fb75a82b31f189d0, type: 2}
+  - {fileID: 2100000, guid: f95feaec1975ceb42a20bcaf41f3fa7b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -21247,7 +21247,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingHealth: 100
   playerhurt: {fileID: 907292808}
-  playerdead: {fileID: 907292813, guid: d3e66ea3881c9244783a8f75e7b181fd, type: 3}
+  playerdead: {fileID: 0}
   currentHealth: 100
   healthSlider: {fileID: 0}
   damageImage: {fileID: 0}
@@ -21266,7 +21266,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 3ee7042a6413f2a4fa97bccd2d94f8a0, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.08
+  m_Volume: 0.6
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -21771,7 +21771,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d48adde300a48c84eba75aa78ba291e4, type: 2}
+  - {fileID: 2100000, guid: d1f536cf743035a4d91bb2e2dbc10cc6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -22020,6 +22020,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2854319631154133147, guid: aae832ddc41ff5e47af8d6514956ed63,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f4e6a7c48206847489ceb84c0728802b, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aae832ddc41ff5e47af8d6514956ed63, type: 3}
 --- !u!82 &939270674018342459 stripped
