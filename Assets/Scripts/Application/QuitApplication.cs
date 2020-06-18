@@ -8,7 +8,7 @@ public class QuitApplication : MonoBehaviour
 
     private void Update()
     {
-        exit();
+    //    exit();
     }
 
     public void exit()

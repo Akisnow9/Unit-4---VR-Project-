@@ -129,7 +129,7 @@ using UnityEngine.UI;
         void Death()
         {
         // Set the death flag so this function won't be called again.
-        guns.SetActive(false);
+        //guns.SetActive(false);
             isDead = true;
         ScoringSystem.end = true;
             playerdead.Play();

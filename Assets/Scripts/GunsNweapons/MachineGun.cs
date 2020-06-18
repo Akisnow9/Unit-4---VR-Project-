@@ -32,6 +32,9 @@ public class MachineGun : MonoBehaviour
         MinigunPowerUp minigunPU;
 
 
+    //Referance to the start game scripts
+       StartTarget startTarget;
+
         //Referance to the players weopon meshs to be ready
         public GameObject shotgunReady;
         public GameObject Plasmagunready;
@@ -83,6 +86,7 @@ public class MachineGun : MonoBehaviour
             plasmagunPU = GetComponent<PlasmagunPowerup>();
             plasmagun = PlayersPlasmagun.GetComponent<PlasmaGun>();
             minigunPU = GetComponent<MinigunPowerUp>();
+        startTarget = GetComponent<StartTarget>();
    
         // gunFire = GetComponentInChildren<Animation>();
        
@@ -216,7 +220,11 @@ public class MachineGun : MonoBehaviour
                     hit.transform.GetComponent<MinigunPowerUp>().GiveMinigun();
                     Debug.Log("I got a minigun!");
                 }
-
+                if (hit.transform.gameObject.tag == "StartGame")
+                {
+                  hit.transform.GetComponent<StartTarget>().StartGame();
+                    Debug.Log(" I shot a target");
+                }
 
 
 
