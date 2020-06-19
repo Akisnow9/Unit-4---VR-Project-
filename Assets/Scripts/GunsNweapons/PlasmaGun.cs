@@ -42,8 +42,11 @@ using UnityEngine.UI;
         //Shows  the how much ammo that the player has ready to reload for the next fire 
         public int ammoCount = 500;
 
-        //Sets up Referances
-        void Awake()
+    //Referance to gun animation
+    public Animation gunFire;
+
+    //Sets up Referances
+    void Awake()
         {
             //  muzzleFlash = GetComponentInChildren<ParticleSystem>();
             enemyHealth = GetComponent<EnemyHealth>();
@@ -52,10 +55,12 @@ using UnityEngine.UI;
         shotgunPU = GetComponent<ShotgunPowerup>();
         // gunFire = GetComponentInChildren<Animation>();
 
+        gunFire = GetComponentInChildren<Animation>();
+
     }
 
-        // updates the text ready to be displayed to the player
-        void Start()
+    // updates the text ready to be displayed to the player
+    void Start()
         {
             UpdateText();
         PlasmagunMesh.SetActive(false);
@@ -79,8 +84,9 @@ using UnityEngine.UI;
                     //when time to shoot, shoot
                     UpdateText();
                     shootRay();
-                    ///then updates to the new time stamp
-                    m_shootRateTimeStamp = Time.time + shootRate;
+                gunFire.Play();
+                ///then updates to the new time stamp
+                m_shootRateTimeStamp = Time.time + shootRate;
                 }
             if (ammoCount == 0)
             {

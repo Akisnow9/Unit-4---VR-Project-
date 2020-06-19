@@ -55,6 +55,8 @@ public class Shotgun : MonoBehaviour
     //referrance of camera to fire ray
     Camera cam;
 
+    //Referance to gun animation
+    public Animation gunFire;
 
     void Awake()
     {
@@ -68,6 +70,7 @@ public class Shotgun : MonoBehaviour
         flamer = playersFlamer.GetComponent<FlameThrower2>();
         minigun = playersMinigun.GetComponent<Minigun>();
 
+        gunFire = GetComponentInChildren<Animation>();
         // gunFire = GetComponentInChildren<Animation>();
 
         // Start is called before the first frame update
@@ -90,6 +93,7 @@ public class Shotgun : MonoBehaviour
     {
         if (Input.GetButtonDown("Fire1") && ammoCount > 0 && Shotgunready == true)
         {
+            gunFire.Play();
             UpdateText();
             Shoot();
         }

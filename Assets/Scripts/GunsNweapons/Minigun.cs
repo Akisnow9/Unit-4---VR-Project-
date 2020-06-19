@@ -85,6 +85,8 @@ using UnityEngine.UI;
     public GameObject flamerReady;
     public GameObject minigunReady;
 
+    //Referance to gun animation
+    public Animation gunFire;
 
 
     //Sets up Referances
@@ -98,7 +100,7 @@ using UnityEngine.UI;
         PlasmagunPU = GetComponent<PlasmagunPowerup>();
         minigunPU = GetComponent<MinigunPowerUp>();
        
-            // gunFire = GetComponentInChildren<Animation>();
+             gunFire = GetComponentInChildren<Animation>();
 
 
 
@@ -190,7 +192,7 @@ using UnityEngine.UI;
                     }
                     //plays audio and displays light when fired
                     gunAudio.Play();
-                    // gunFire.Play();
+                     gunFire.Play();
 
 
                     //Makes sure the muzzleFlash stops and starts again

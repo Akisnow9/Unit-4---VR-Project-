@@ -73,8 +73,9 @@ public class MachineGun : MonoBehaviour
 
     //shows gun particles when gun is fired
     // public ParticleSystem muzzleFlash;
-
-    // public Animation gunFire;
+    
+     //Referance to gun animation
+     public Animation gunFire;
 
     //Sets up Referances
     void Awake()
@@ -88,7 +89,7 @@ public class MachineGun : MonoBehaviour
             minigunPU = GetComponent<MinigunPowerUp>();
         startTarget = GetComponent<StartTarget>();
    
-        // gunFire = GetComponentInChildren<Animation>();
+         gunFire = GetComponentInChildren<Animation>();
        
     }
 
@@ -167,7 +168,7 @@ public class MachineGun : MonoBehaviour
                 }
                 //plays audio and displays light when fired
                 gunAudio.Play();
-                // gunFire.Play();
+                 gunFire.Play();
 
 
                 //Makes sure the muzzleFlash stops and starts again

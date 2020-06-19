@@ -66,6 +66,9 @@ using UnityEngine.UI;
     public GameObject ShotgunmeshReady;
     public GameObject Flamermesh;
 
+    //Referance to gun animation
+    public Animation gunFire;
+
     // public Animation gunFire;
 
     //Sets up Referances
@@ -75,7 +78,7 @@ using UnityEngine.UI;
         enemyHealth = GetComponent<EnemyHealth>();
         gunAudio = GetComponent<AudioSource>();
         // gunFire = GetComponentInChildren<Animation>();
-
+        gunFire = GetComponentInChildren<Animation>();
     }
 
     // updates the text ready to be displayed to the player
@@ -137,7 +140,8 @@ using UnityEngine.UI;
             if (Input.GetMouseButton(0) && timer >= timeBetweenBullets && ammoCount > 0)
             {
                 timer = 0f;
-               // flames.SetActive(true);
+                gunFire.Play();
+                // flames.SetActive(true);
                 //if you are out of ammo in your clip, you cant fire and a sound will play
                 if (ammoCount == 0)
                 {
