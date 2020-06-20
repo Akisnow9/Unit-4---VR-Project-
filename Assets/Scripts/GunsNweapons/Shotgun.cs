@@ -39,6 +39,7 @@ public class Shotgun : MonoBehaviour
     public GameObject FlamethrowerMesh;
     public GameObject minigunMesh;
 
+    public ParticleSystem shotgunflash;
 
     public AudioSource shotgunstart;
     //Referances to gun power ups and guns players guns
@@ -60,7 +61,7 @@ public class Shotgun : MonoBehaviour
 
     void Awake()
     {
-        //  muzzleFlash = GetComponentInChildren<ParticleSystem>();
+         shotgunflash = GetComponentInChildren<ParticleSystem>();
         shotgunstart = GetComponent<AudioSource>();
         enemyHealth = GetComponent<EnemyHealth>();
         gunAudio = GetComponent<AudioSource>();
@@ -69,6 +70,7 @@ public class Shotgun : MonoBehaviour
         plasmagunPU = GetComponent<PlasmagunPowerup>();
         flamer = playersFlamer.GetComponent<FlameThrower2>();
         minigun = playersMinigun.GetComponent<Minigun>();
+
 
         gunFire = GetComponentInChildren<Animation>();
         // gunFire = GetComponentInChildren<Animation>();
@@ -93,9 +95,11 @@ public class Shotgun : MonoBehaviour
     {
         if (Input.GetButtonDown("Fire1") && ammoCount > 0 && Shotgunready == true)
         {
+            shotgunflash.Play();
             gunFire.Play();
             UpdateText();
             Shoot();
+            //muzzle.SetActive(true);
         }
         if (ammoCount == 0 && plasmagun.ammoCount == 0 && flamer.ammoCount == 0 && minigun.ammoCount == 0)
         {
@@ -112,6 +116,7 @@ public class Shotgun : MonoBehaviour
         else if (ammoCount >= 0 && plasmagun.ammoCount == 0 && flamer.ammoCount == 0)
         {
             Shotgunready = true;
+            shotgunflash.Stop();
 
         }
     }

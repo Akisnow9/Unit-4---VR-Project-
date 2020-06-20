@@ -72,7 +72,7 @@ public class MachineGun : MonoBehaviour
     private bool canShoot = true;
 
     //shows gun particles when gun is fired
-    // public ParticleSystem muzzleFlash;
+     public ParticleSystem muzzleFlash;
     
      //Referance to gun animation
      public Animation gunFire;
@@ -80,7 +80,7 @@ public class MachineGun : MonoBehaviour
     //Sets up Referances
     void Awake()
     {
-        //  muzzleFlash = GetComponentInChildren<ParticleSystem>();
+         muzzleFlash = GetComponentInChildren<ParticleSystem>();
         enemyHealth = GetComponent<EnemyHealth>();
          gunAudio = GetComponent<AudioSource>();
          shotgunPU = GetComponent<ShotgunPowerup>();
@@ -172,8 +172,8 @@ public class MachineGun : MonoBehaviour
 
 
                 //Makes sure the muzzleFlash stops and starts again
-                // muzzleFlash.Stop();
-                // muzzleFlash.Play();
+                 //muzzleFlash.Stop();
+                 muzzleFlash.Play();
                 canShoot = false;
                 Invoke("ResetShooting", timeBetweenBullets);
                     // - 1 everytime the player fires and updates text
@@ -182,12 +182,12 @@ public class MachineGun : MonoBehaviour
             if (hit.transform.gameObject.tag == "Health")
                     {
                         hit.transform.GetComponent<HealthPickUp2>().HealPlayer();
-                        Debug.Log("I shot the health kit");
+                        
                     }
             if (hit.transform.gameObject.tag == "Enemy")
                     {
                      hit.transform.GetComponent<EnemyHealth>().TakeDamage(damage);
-                     Debug.Log("I shot an enemy with a machine gun!");
+                     
                     }
 
             if (hit.transform.gameObject.tag == "Shotgun")
@@ -195,15 +195,15 @@ public class MachineGun : MonoBehaviour
                         hit.transform.GetComponent<ShotgunPowerup>().GiveShotgun();
                         gameObject.SetActive(false);
                         shotgunReady.SetActive(true);
-                        Debug.Log("I got a shotty!");
+                        
                     }
             if (hit.transform.gameObject.tag == "Plasmagun")
                     {
                         hit.transform.GetComponent<PlasmagunPowerup>().GivePlasmagun();
                         gameObject.SetActive(false);
                         Plasmagunready.SetActive(true);
-                        //plasmagun.PlasmagunReady(true);
-                        Debug.Log(" I shot a plassy");
+                        
+                        
                     }
 
                     if (hit.transform.gameObject.tag == "Flamer")
@@ -212,36 +212,26 @@ public class MachineGun : MonoBehaviour
                         //gameObject.SetActive(false);
                        /// flamerReady.SetActive(true);
                         //plasmagun.PlasmagunReady(true);
-                        Debug.Log(" I shot a flamer");
+                       
                     }
                 if (hit.transform.gameObject.tag == "Minigun")
                 {
                     gameObject.SetActive(false);
                     minigunReady.SetActive(true);
                     hit.transform.GetComponent<MinigunPowerUp>().GiveMinigun();
-                    Debug.Log("I got a minigun!");
+                    
                 }
                 if (hit.transform.gameObject.tag == "StartGame")
                 {
                   hit.transform.GetComponent<StartTarget>().StartGame();
-                    Debug.Log(" I shot a target");
+                    ;
                 }
 
-
-
-
-                    //If you hit the enemy, you will damage the zombie and eventuallu kill it
-                    // if (hit.transform.gameObject.tag == "Enemy")
-                    //  {
-                    //    hit.transform.GetComponent<EnemyHealth>().TakeDamage(damage);
-                    //     Debug.Log("I shot an enemy with a machine gun!");
-                    //}
-
-                }
+               }
             //If not firing, dont display the effects
             else if (Input.GetMouseButtonUp(0))
             {
-                // muzzleFlash.Stop();
+                 muzzleFlash.Stop();
                 // gunLight.enabled = false;
 
             }
@@ -263,7 +253,7 @@ public class MachineGun : MonoBehaviour
     //Disables muzzleflash when player is dead
     public void StopMuzzleFlash()
     {
-        //   muzzleFlash.Stop();
+           muzzleFlash.Stop();
     }
 
     //a function used to gain ammo when the player picks up ammo

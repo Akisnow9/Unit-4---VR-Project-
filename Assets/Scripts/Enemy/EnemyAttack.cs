@@ -6,6 +6,10 @@ namespace UnityStandardAssets.Characters.FirstPerson
 {
     public class EnemyAttack : MonoBehaviour
     {
+        // referanc to Animator
+        public Animator enemyAnimator;
+
+
         public float timeBetweenAttacks = 0.5f;     // The time in seconds between each attack.
 
         // The amount of health taken away per attack.
@@ -17,6 +21,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         // Reference to the player's health.
         public PlayerHealth playerHealth;
+        EnemyHealth enemyHealth;
 
         // Reference to this enemy's health.
         // EnemyHealth enemyHealth;                    
@@ -33,7 +38,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             // Setting up the references.
             player = GameObject.FindGameObjectWithTag("Player");
             playerHealth = player.GetComponent<PlayerHealth>();
-
+            enemyHealth = GetComponent<EnemyHealth>();
         }
 
         //only attacks the player is in the collider
@@ -42,6 +47,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             // If the entering collider is the player...
             if (other.gameObject == player)
             {
+                enemyAnimator.SetBool("IsAttacking", true);
                 // ... the player is in range.
                 playerInRange = true;
                 Debug.Log ("Baddie has found Player");
@@ -86,7 +92,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             timer = 0f;
 
             // If the player has health to lose...
-            if (playerHealth.currentHealth > 0)
+            if (playerHealth.currentHealth > 0 && enemyHealth.Ehealth > 0)
             {
                 // ... damage the player.
                 playerHealth.TakeDamage(attackDamage);

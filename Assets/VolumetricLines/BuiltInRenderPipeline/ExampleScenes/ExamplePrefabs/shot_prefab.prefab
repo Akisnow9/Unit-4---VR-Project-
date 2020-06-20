@@ -99,8 +99,8 @@ MonoBehaviour:
   m_startPos: {x: 0, y: 0, z: 0}
   m_endPos: {x: 0, y: 0, z: 50}
   m_lineColor: {r: 0.034482718, g: 1, b: 0, a: 0}
-  m_lineWidth: 66
-  m_lightSaberFactor: 0.747
+  m_lineWidth: 9.7
+  m_lightSaberFactor: 0.33
 --- !u!114 &11468384
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -129,8 +129,8 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 0, g: 1, b: 0.96570706, a: 1}
-  m_Intensity: 2
-  m_Range: 50
+  m_Intensity: 1
+  m_Range: 1
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10

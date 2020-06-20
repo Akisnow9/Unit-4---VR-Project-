@@ -41,7 +41,7 @@ public class ShotBehavior : MonoBehaviour
                 collisionExplosion, transform.position, transform.rotation);
             //Destroys the laser and explosion
             Destroy(gameObject);
-            Destroy(explosion, 1f);
+            Destroy(explosion, 1.5f);
         }
     }
 }

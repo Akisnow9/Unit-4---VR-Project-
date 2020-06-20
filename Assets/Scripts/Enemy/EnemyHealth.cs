@@ -5,8 +5,14 @@ using UnityEngine;
 //This script controls the Enemys health
 public class EnemyHealth : MonoBehaviour
 {
-    //Referance to when the enmey is hurt
+
+    public Animator enemyAnimator;
+
+    //Referance to when the enemey is hurt
      public AudioSource enemyhurt;
+
+    //Referance to when the enemey is dead
+    public AudioSource enemydeath;
    
     // EnemyWarningZone enemyWarningZone;
     //enemys starting Health 
@@ -25,11 +31,21 @@ public class EnemyHealth : MonoBehaviour
     // bool HasExploded = false;
     // public GameObject Explosivo;
     public Transform pickupPosition;
+
+    public GameObject FireGO;
+
     // stores pickups so when thge enmey dies, it instantiates powerups
     public Rigidbody[] SpawnPickupPrefabs;
+    public bool isdead = false;
+    public bool readytodrop = false;
 
 
-   // public GameObject warningzone;
+    //how long it takes before the zombie is destroyed
+    public float destoryDelay = 5f;
+    float destroyTimer;
+
+
+    // public GameObject warningzone;
     //Removes Counter points from Warning zone when sighted zombie is dead
     private int removeCpoints = 2;
 
@@ -43,7 +59,7 @@ public class EnemyHealth : MonoBehaviour
         }
         if (Ehealth <= 0f)
         {
-
+            isdead = true;
             Die();
             //  HasExploded = true;
         }
@@ -54,6 +70,15 @@ public class EnemyHealth : MonoBehaviour
             Debug.Log("The enemy is no longer in sight");
             // warningZone.GetComponent<EnemyWarningZone>().RemoveCounterpoints(removeCpoints);
             Debug.Log("Points removed");
+        }
+        if (isdead == true)
+            destroyTimer += Time.deltaTime;
+        if (destroyTimer >= destoryDelay)
+        {
+            //SceneManager.LoadScene("Winner");
+            //Application.Quit();
+            
+            Destroy(gameObject);
         }
 
     }
@@ -77,7 +102,7 @@ public class EnemyHealth : MonoBehaviour
         //  if (Ehealth <= 0f && !HasExploded)
         if (Ehealth <= 0f)
         {
-
+            isdead = true;
             Die();
             //  HasExploded = true;
         }
@@ -87,7 +112,8 @@ public class EnemyHealth : MonoBehaviour
     public void OnParticleCollision(GameObject other)
     {
         isburning = true;
-        fireeffect.Play();
+        //fireeffect.Play();
+        FireGO.SetActive(true);
         Ehealth -= firedamage;
         enemyhurt.Play();
         //  Debug.Log("A particle hit me!");
@@ -106,12 +132,19 @@ public class EnemyHealth : MonoBehaviour
     //This function also gives players points to the scoreValue
     void Die()
     {
-       // ScoreManager.score += Scorevalue;
+        enemyAnimator.SetBool("IsDead", true);
+        // ScoreManager.score += Scorevalue;
         //Instantiate(Explosivo, gameObject.transform.position, transform.rotation);
-        int a = Random.Range(0, SpawnPickupPrefabs.Length);
-        Rigidbody spawnPickupInstance;
-        spawnPickupInstance = Instantiate(SpawnPickupPrefabs[a], pickupPosition.position, pickupPosition.rotation) as Rigidbody; 
-        Destroy(gameObject);
+        if (readytodrop != true)
+        {
+            enemydeath.Play();
+            int a = Random.Range(0, SpawnPickupPrefabs.Length);
+            Rigidbody spawnPickupInstance;
+            spawnPickupInstance = Instantiate(SpawnPickupPrefabs[a], pickupPosition.position, pickupPosition.rotation) as Rigidbody;
+            //Destroy(gameObject);
+            readytodrop = true;
+            Debug.Log("I droped one!");
+        }
     }
 
     public void Sighted( int amount)
