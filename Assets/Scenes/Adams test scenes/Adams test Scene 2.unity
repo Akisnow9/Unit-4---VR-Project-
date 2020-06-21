@@ -8169,6 +8169,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Health Powerup
       objectReference: {fileID: 0}
+    - target: {fileID: 2122267758161303220, guid: b68ffc851640afa478a1de3cf58ced80,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2122267758161303223, guid: b68ffc851640afa478a1de3cf58ced80,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -13264,6 +13269,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy Manager
       objectReference: {fileID: 0}
+    - target: {fileID: 6448279631809631622, guid: f65d975bf11c4fe429be07b927903ef5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6448279632446307479, guid: f65d975bf11c4fe429be07b927903ef5,
         type: 3}
       propertyPath: m_LocalPosition.z
@@ -14319,7 +14329,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1591835725
 Transform:
   m_ObjectHideFlags: 0
@@ -19727,6 +19737,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: FlameThrowerPowerUp
       objectReference: {fileID: 0}
+    - target: {fileID: 2515730910113588284, guid: 848239eedfc7aa142aab72088f354e65,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2515730910113588285, guid: 848239eedfc7aa142aab72088f354e65,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -19864,6 +19879,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: 'MinigunPowerUp '
       objectReference: {fileID: 0}
+    - target: {fileID: 4294258400410086278, guid: e6ea31565f91b7444b66a63a9771826c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e6ea31565f91b7444b66a63a9771826c, type: 3}
 --- !u!1 &4945692489032245000 stripped
@@ -19879,10 +19899,38 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 419909133, guid: d3e66ea3881c9244783a8f75e7b181fd, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1908773329, guid: d3e66ea3881c9244783a8f75e7b181fd, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1970304994391456788, guid: d3e66ea3881c9244783a8f75e7b181fd,
+        type: 3}
+      propertyPath: effectsDisplayTime
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1970304994391456788, guid: d3e66ea3881c9244783a8f75e7b181fd,
+        type: 3}
+      propertyPath: timeBetweenBullets
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2326106641203450775, guid: d3e66ea3881c9244783a8f75e7b181fd,
+        type: 3}
+      propertyPath: looping
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4987672099407547431, guid: d3e66ea3881c9244783a8f75e7b181fd,
         type: 3}
       propertyPath: m_Name
       value: Main Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 4987672099407547431, guid: d3e66ea3881c9244783a8f75e7b181fd,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4987672099407547432, guid: d3e66ea3881c9244783a8f75e7b181fd,
         type: 3}
@@ -19949,10 +19997,20 @@ PrefabInstance:
       propertyPath: damageImage
       value: 
       objectReference: {fileID: 2088247605}
-    - target: {fileID: 7401076811896920518, guid: d3e66ea3881c9244783a8f75e7b181fd,
+    - target: {fileID: 8266921430400244746, guid: d3e66ea3881c9244783a8f75e7b181fd,
         type: 3}
-      propertyPath: m_IsActive
-      value: 1
+      propertyPath: m_LocalPosition.z
+      value: 0.962
+      objectReference: {fileID: 0}
+    - target: {fileID: 8266921430400244746, guid: d3e66ea3881c9244783a8f75e7b181fd,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8266921430400244746, guid: d3e66ea3881c9244783a8f75e7b181fd,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.04
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d3e66ea3881c9244783a8f75e7b181fd, type: 3}
@@ -20427,6 +20485,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlasmaGunPowerUp
       objectReference: {fileID: 0}
+    - target: {fileID: 8002871560980070009, guid: ebd87bea1901bd94c873eafbbe6cc399,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8002871560980070010, guid: ebd87bea1901bd94c873eafbbe6cc399,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -20555,6 +20618,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ShotgunPowerUp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6796452856756497526, guid: 68470dc81cea6564eaa65c279acc5538,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 68470dc81cea6564eaa65c279acc5538, type: 3}

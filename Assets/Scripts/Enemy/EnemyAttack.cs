@@ -15,6 +15,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         // The amount of health taken away per attack.
         public int attackDamage = 10;
 
+        public AudioSource enemyAttack;
 
         // Reference to the player GameObject.
         public GameObject player;
@@ -75,6 +76,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             if (timer >= timeBetweenAttacks && playerInRange)
             {
                 // ... attack.
+
                 Attack();
             }
 
@@ -88,12 +90,14 @@ namespace UnityStandardAssets.Characters.FirstPerson
         //This function determins how the enemey attacks the Player
         void Attack()
         {
+            
             // Reset the timer.
             timer = 0f;
 
             // If the player has health to lose...
             if (playerHealth.currentHealth > 0 && enemyHealth.Ehealth > 0)
             {
+                enemyAttack.Play();
                 // ... damage the player.
                 playerHealth.TakeDamage(attackDamage);
 

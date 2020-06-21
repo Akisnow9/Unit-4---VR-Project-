@@ -56,7 +56,7 @@ using UnityEngine.UI;
         private bool canShoot = true;
 
     //shows gun particles when gun is fired
-    public ParticleSystem muzzleFlash;
+   // public ParticleSystem muzzleFlash;
 
     // public Animation gunFire;
 
@@ -92,7 +92,7 @@ using UnityEngine.UI;
     //Sets up Referances
     void Awake()
         {
-              muzzleFlash = GetComponentInChildren<ParticleSystem>();
+            //  muzzleFlash = GetComponentInChildren<ParticleSystem>();
             enemyHealth = GetComponent<EnemyHealth>();
              gunAudio = GetComponent<AudioSource>();
         shotgun = playershotgun.GetComponent<Shotgun>();
@@ -196,8 +196,8 @@ using UnityEngine.UI;
 
 
                     //Makes sure the muzzleFlash stops and starts again
-                     muzzleFlash.Stop();
-                     muzzleFlash.Play();
+                    // muzzleFlash.Stop();
+                   //  muzzleFlash.Play();
                     canShoot = false;
                     Invoke("ResetShooting", timeBetweenBullets);
 
@@ -262,7 +262,7 @@ using UnityEngine.UI;
                 //If not firing, dont display the effects
                 else if (Input.GetMouseButtonUp(0))
                 {
-                     muzzleFlash.Stop();
+                 //    muzzleFlash.Stop();
                     // gunLight.enabled = false;
 
                 }
@@ -284,7 +284,7 @@ using UnityEngine.UI;
         //Disables muzzleflash when player is dead
         public void StopMuzzleFlash()
         {
-              muzzleFlash.Stop();
+            //  muzzleFlash.Stop();
         }
 
         //a function used to gain ammo when the player picks up ammo
