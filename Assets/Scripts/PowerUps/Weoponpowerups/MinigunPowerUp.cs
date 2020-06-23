@@ -15,6 +15,8 @@ public class MinigunPowerUp : MonoBehaviour
 
     public int ammoreceived = 20;
 
+    //game object that instantiates firworks when shot
+    public GameObject fireworks;
 
     // Start is called before the first frame update
     void Awake()
@@ -33,7 +35,7 @@ public class MinigunPowerUp : MonoBehaviour
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         GameObject playersMinigun = GameObject.FindGameObjectWithTag("PMinigun");
         playersMinigun.GetComponent<Minigun>().AmmoEarned(ammogiven);
-        Debug.Log("I shot a minigun!");
+        Instantiate(fireworks, gameObject.transform.position, transform.rotation);
         Destroy(gameObject);
     }
     public void GetMoreAmmo()
@@ -41,7 +43,7 @@ public class MinigunPowerUp : MonoBehaviour
         GameObject player = GameObject.FindGameObjectWithTag("Player");
        GameObject playersMinigun = GameObject.FindGameObjectWithTag("PMinigun");
         playersMinigun.GetComponent<Minigun>().AmmoEarned(ammoreceived);
-       Debug.Log("I got more ammo!");
-       Destroy(gameObject);
+        Instantiate(fireworks, gameObject.transform.position, transform.rotation);
+        Destroy(gameObject);
     }
 }

@@ -53,7 +53,11 @@ public class EnemyMovement : MonoBehaviour
             nav.enabled = false;
             atkCol.enabled = false;
             shootCol.enabled = false;
-           // Destroy(gameObject);
+            //Destroy(gameObject);
+        }
+        if (playerHealth.currentHealth == 0)
+        {
+            Destroy(gameObject);
         }
         // }
         // Otherwise...

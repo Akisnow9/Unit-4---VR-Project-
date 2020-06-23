@@ -25,6 +25,9 @@ public class ShotgunPowerup : MonoBehaviour
     //referance to the players flames
     public ParticleSystem fireeffect;
 
+    //game object that instantiates firworks when shot
+    public GameObject fireworks;
+
     // Gets a referances ready to use when called
     void Awake()
     {
@@ -48,6 +51,7 @@ public class ShotgunPowerup : MonoBehaviour
         GameObject playersShotgun = GameObject.FindGameObjectWithTag("Pshotgun");
         //playersShotgun.SetActive(true);
         playersShotgun.GetComponent<Shotgun>().AmmoPickup(ammogiven);
+        Instantiate(fireworks, gameObject.transform.position, transform.rotation);
         Destroy(gameObject);
     }
     public void GetMoreAmmo()
@@ -55,6 +59,7 @@ public class ShotgunPowerup : MonoBehaviour
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         GameObject playersShotgun = GameObject.FindGameObjectWithTag("Pshotgun");
         playersShotgun.GetComponent<Shotgun>().AmmoPickup(ammoreceived);
+        Instantiate(fireworks, gameObject.transform.position, transform.rotation);
         Destroy(gameObject);
     }
     //this void is only for the minigun to fix a bug

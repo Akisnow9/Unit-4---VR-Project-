@@ -1,0 +1,152 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5850955407438144782
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 701189554157490164}
+  m_Layer: 0
+  m_Name: TrainTankerP 2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
+--- !u!4 &701189554157490164
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5850955407438144782}
+  m_LocalRotation: {x: 0.17290182, y: 0.2758217, z: -0.37419584, w: 0.86833453}
+  m_LocalPosition: {x: 68.38, y: 4.02, z: 10.27}
+  m_LocalScale: {x: 169.92607, y: 110.74663, z: 104.13411}
+  m_Children:
+  - {fileID: 918970368183802312}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 30.444002, y: 23.924002, z: -40.027}
+--- !u!65 &2233487292164248669
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8900488448210122825}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.030143399, y: 0.040590256, z: 0.09098558}
+  m_Center: {x: 0.000012856128, y: 0.022310378, z: -9.7021224e-11}
+--- !u!1001 &5312666878436258514
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 701189554157490164}
+    m_Modifications:
+    - target: {fileID: -7918595313718586606, guid: e7cc62ccbee57f94ea7b1c01e06a959d,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7aefe30f27ae8e74489e716ebaab67d5, type: 2}
+    - target: {fileID: -7626421441720393175, guid: e7cc62ccbee57f94ea7b1c01e06a959d,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: aeb53bf2e6dceaf4c9d6a25959db4a34, type: 2}
+    - target: {fileID: -4216859302048453862, guid: e7cc62ccbee57f94ea7b1c01e06a959d,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.01695868
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: e7cc62ccbee57f94ea7b1c01e06a959d,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.017633677
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: e7cc62ccbee57f94ea7b1c01e06a959d,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.000000017783956
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: e7cc62ccbee57f94ea7b1c01e06a959d,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: e7cc62ccbee57f94ea7b1c01e06a959d,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: e7cc62ccbee57f94ea7b1c01e06a959d,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: e7cc62ccbee57f94ea7b1c01e06a959d,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: e7cc62ccbee57f94ea7b1c01e06a959d,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: e7cc62ccbee57f94ea7b1c01e06a959d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: e7cc62ccbee57f94ea7b1c01e06a959d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: e7cc62ccbee57f94ea7b1c01e06a959d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: e7cc62ccbee57f94ea7b1c01e06a959d,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: e7cc62ccbee57f94ea7b1c01e06a959d,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: e7cc62ccbee57f94ea7b1c01e06a959d,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: e7cc62ccbee57f94ea7b1c01e06a959d,
+        type: 3}
+      propertyPath: m_Name
+      value: TrainTanker
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e7cc62ccbee57f94ea7b1c01e06a959d, type: 3}
+--- !u!4 &918970368183802312 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: e7cc62ccbee57f94ea7b1c01e06a959d,
+    type: 3}
+  m_PrefabInstance: {fileID: 5312666878436258514}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8900488448210122825 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -5602898538701452645, guid: e7cc62ccbee57f94ea7b1c01e06a959d,
+    type: 3}
+  m_PrefabInstance: {fileID: 5312666878436258514}
+  m_PrefabAsset: {fileID: 0}

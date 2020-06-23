@@ -34,7 +34,7 @@ using UnityEngine.UI;
        // GunLight gunLight;
       
         // The speed the damageImage will fade at.
-        public float flashSpeed = 5f;
+        public float flashSpeed = 10f;
 
         // The colour the damageImage is set to, to flash.
         public Color flashColour = new Color(1f, 0f, 0f, 0.1f);                                  

@@ -20,6 +20,9 @@ public class PlasmagunPowerup : MonoBehaviour
     //referance to the players flames
     public ParticleSystem fireeffect;
 
+    //game object that instantiates firworks when shot
+    public GameObject fireworks;
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -40,7 +43,8 @@ public class PlasmagunPowerup : MonoBehaviour
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         GameObject playersPlasmagun = GameObject.FindGameObjectWithTag("Pplasmagun");
         playersPlasmagun.GetComponent<PlasmaGun>().AmmoPickup(ammogiven);
-     //   Debug.Log("I shot the Plasmagun!");
+        //   Debug.Log("I shot the Plasmagun!");
+        Instantiate(fireworks, gameObject.transform.position, transform.rotation);
 
         Destroy(gameObject);
     }
@@ -49,7 +53,8 @@ public class PlasmagunPowerup : MonoBehaviour
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         GameObject playersPlasmagun = GameObject.FindGameObjectWithTag("Pplasmagun");
         playersPlasmagun.GetComponent<PlasmaGun>().AmmoPickup(ammoreceived);
-      //  Debug.Log("I got evan more plasma ammo!");
+        //  Debug.Log("I got evan more plasma ammo!");
+        Instantiate(fireworks, gameObject.transform.position, transform.rotation);
         Destroy(gameObject);
     }
    /* public void OnParticleCollision(GameObject other)

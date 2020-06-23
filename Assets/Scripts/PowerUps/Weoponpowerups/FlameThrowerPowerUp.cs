@@ -20,6 +20,10 @@ public class FlameThrowerPowerUp : MonoBehaviour
 
     public ParticleSystem fireeffect;
     // Start is called before the first frame update
+
+    //game object that instantiates firworks when shot
+    public GameObject fireworks;
+
     void Awake()
     {
         plasmagun = GetComponent<PlasmaGun>();
@@ -38,7 +42,8 @@ public class FlameThrowerPowerUp : MonoBehaviour
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         GameObject playersFlamer = GameObject.FindGameObjectWithTag("PFlamer");
         playersFlamer.GetComponent<FlameThrower2>().AmmoEarned(ammogiven);
-        Debug.Log("I found a flamer");
+      //  Debug.Log("I found a flamer");
+        Instantiate(fireworks, gameObject.transform.position, transform.rotation);
         Destroy(gameObject);
     }
     //Gives Ammo to player if player burns with a flamer

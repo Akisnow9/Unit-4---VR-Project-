@@ -110,6 +110,7 @@ MonoBehaviour:
   player: {fileID: 0}
   speed: 0.33
   healthSupply: 20
+  fireworks: {fileID: 120410, guid: 6636b3078b0905e489f698a11b7a6b6b, type: 3}
 --- !u!114 &4089649173669320395
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -204,7 +205,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: fff1843d5f0316a429471c1b7c5502da, type: 2}
+      objectReference: {fileID: 2100000, guid: 2a24a218037c2bf40b533759fbee1ac0, type: 2}
     - target: {fileID: -927199367670048503, guid: 370cfd01762075e4a966d512ddbb1257,
         type: 3}
       propertyPath: m_Name

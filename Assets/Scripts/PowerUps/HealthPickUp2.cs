@@ -18,9 +18,11 @@ using UnityEngine;
         //The amount of health gained when the player picks it up
         public int healthSupply;
 
+    //game object that instantiates firworks when shot
+    public GameObject fireworks;
 
-        // Gets a referances ready to use when called
-        void Awake()
+    // Gets a referances ready to use when called
+    void Awake()
         {
             playerHealth = GetComponent<PlayerHealth>();
         }
@@ -40,13 +42,15 @@ using UnityEngine;
                 //Instantiate(healthSFX, gameObject.transform.position, transform.rotation);
                 GameObject player = GameObject.FindGameObjectWithTag("Player");
                 player.GetComponent<PlayerHealth>().HealthEarned(healthSupply);
-                Destroy(gameObject);
+        Instantiate(fireworks, gameObject.transform.position, transform.rotation);
+            Destroy(gameObject);
               
             }
     public void OnParticleCollision(GameObject other)
     {
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         player.GetComponent<PlayerHealth>().HealthEarned(healthSupply);
+        Instantiate(fireworks, gameObject.transform.position, transform.rotation);
         Destroy(gameObject);
         Debug.Log("I burned the healthkit");
     }
