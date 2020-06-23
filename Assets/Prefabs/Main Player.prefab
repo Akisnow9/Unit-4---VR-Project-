@@ -734,7 +734,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 523a2d3fd111c8a458dfdc4c1c17728a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 8
+  damage: 10
   shotgunReady: {fileID: 114107611198470126}
   Plasmagunready: {fileID: 4987672099687629377}
   flamerReady: {fileID: 2038757340563292732}
