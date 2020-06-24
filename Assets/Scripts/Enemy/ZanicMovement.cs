@@ -1,19 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-// This script allows Enemys to navigate  through the navmesh agent to go to players position
-public class EnemyMovement : MonoBehaviour
-{
 
+public class ZanicMovement : MonoBehaviour
+{
     // Reference to the player's position.
     Transform player;
     PlayerHealth playerHealth;
-    EnemyHealth enemyHealth;
+    ZanicHealth zanicHealth; 
 
-    //Referance to colliders
-    public Collider atkCol;
-    public Collider shootCol;
-   
+  
 
     // Reference to the nav mesh agent.
     UnityEngine.AI.NavMeshAgent nav;
@@ -22,9 +18,9 @@ public class EnemyMovement : MonoBehaviour
     {
         // Set up the references.
         player = GameObject.FindGameObjectWithTag("Player").transform;
-       
-        playerHealth = player.GetComponent <PlayerHealth> ();
-        enemyHealth = GetComponent<EnemyHealth>();
+
+        playerHealth = player.GetComponent<PlayerHealth>();
+        zanicHealth = GetComponent<ZanicHealth>();
         //enemyHealth = GetComponent <EnemyHealth> ();
         nav = GetComponent<UnityEngine.AI.NavMeshAgent>();
     }
@@ -33,7 +29,7 @@ public class EnemyMovement : MonoBehaviour
     //This function is not yet ready
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -42,7 +38,7 @@ public class EnemyMovement : MonoBehaviour
     {
         // If the enemy and the player have health left...
 
-        if ( enemyHealth.Ehealth > 0 && playerHealth.currentHealth > 0)
+        if (zanicHealth.Ehealth > 0 && playerHealth.currentHealth > 0)
         {
             // ... set the destination of the nav mesh agent to the player.
             nav.SetDestination(player.position);
@@ -51,11 +47,10 @@ public class EnemyMovement : MonoBehaviour
         {
             // ... disable the nav mesh agent.
             nav.enabled = false;
-            atkCol.enabled = false;
-            shootCol.enabled = false;
+            
             //Destroy(gameObject);
         }
-        if (playerHealth.currentHealth == 0 )
+        if (playerHealth.currentHealth == 0)
         {
             Destroy(gameObject);
         }
@@ -66,4 +61,5 @@ public class EnemyMovement : MonoBehaviour
         // ... disable the nav mesh agent.
         //     nav.enabled = false;
     }
-    }
+}
+

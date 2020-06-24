@@ -20,6 +20,7 @@ public class MachineGun : MonoBehaviour
 
     //Stores referance to the enemyhealth to hurt or kill the enemy
     EnemyHealth enemyHealth;
+    ZanicHealth zanicHealth;
     //EnemyMovement2 enemyMovement2;
 
     //stores referance of the gunshots
@@ -30,6 +31,7 @@ public class MachineGun : MonoBehaviour
         PlasmagunPowerup plasmagunPU;
         FlameThrowerPowerUp flamerPU;
         MinigunPowerUp minigunPU;
+        RingPowerup RingPU;
 
 
     //Referance to the start game scripts
@@ -77,20 +79,24 @@ public class MachineGun : MonoBehaviour
      //Referance to gun animation
      public Animation gunFire;
 
+    ActivateZem zem;
     //Sets up Referances
     void Awake()
     {
+
          muzzleFlash = GetComponentInChildren<ParticleSystem>();
         enemyHealth = GetComponent<EnemyHealth>();
+        zanicHealth = GetComponent<ZanicHealth>();
          gunAudio = GetComponent<AudioSource>();
          shotgunPU = GetComponent<ShotgunPowerup>();
             plasmagunPU = GetComponent<PlasmagunPowerup>();
             plasmagun = PlayersPlasmagun.GetComponent<PlasmaGun>();
             minigunPU = GetComponent<MinigunPowerUp>();
+            RingPU = GetComponent<RingPowerup>();
         startTarget = GetComponent<StartTarget>();
    
          gunFire = GetComponentInChildren<Animation>();
-       
+        zem = GetComponent<ActivateZem>();
     }
 
     // updates the text ready to be displayed to the player
@@ -186,11 +192,20 @@ public class MachineGun : MonoBehaviour
                     }
             if (hit.transform.gameObject.tag == "Enemy")
                     {
-                     hit.transform.GetComponent<EnemyHealth>().TakeDamage(damage);
-                     
+                    hit.transform.GetComponent<EnemyHealth>().TakeDamage(damage);
                     }
+                if (hit.transform.gameObject.tag == "Zanic")
+                {
+                    hit.transform.GetComponent<ZanicHealth>().TakeDamage(damage);
+                }
 
-            if (hit.transform.gameObject.tag == "Shotgun")
+                if (hit.transform.gameObject.tag == "Ring")
+                {
+                    hit.transform.GetComponent<RingPowerup>().GetPoints();
+                    Debug.Log("I shot a ring!");
+                }
+
+                if (hit.transform.gameObject.tag == "Shotgun")
                     {
                         hit.transform.GetComponent<ShotgunPowerup>().GiveShotgun();
                         gameObject.SetActive(false);
@@ -224,10 +239,15 @@ public class MachineGun : MonoBehaviour
                 if (hit.transform.gameObject.tag == "StartGame")
                 {
                   hit.transform.GetComponent<StartTarget>().StartGame();
-                    ;
+                    
+                }
+                if (hit.transform.gameObject.tag == "ZanicRing")
+                {
+                    hit.transform.GetComponent<ActivateZem>().activiatezem();
                 }
 
-               }
+
+            }
             //If not firing, dont display the effects
             else if (Input.GetMouseButtonUp(0))
             {

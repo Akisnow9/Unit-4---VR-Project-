@@ -53,8 +53,13 @@ public class Shotgun : MonoBehaviour
     public GameObject playersPlasmagun;
     public GameObject playersFlamer;
     public GameObject playersMinigun;
+
+    ZanicHealth zanicHealth;
+    RingPowerup RingPU;
+
     //referrance of camera to fire ray
     Camera cam;
+    ActivateZem zem;
 
     //Referance to gun animation
     public Animation gunFire;
@@ -70,10 +75,13 @@ public class Shotgun : MonoBehaviour
         plasmagunPU = GetComponent<PlasmagunPowerup>();
         flamer = playersFlamer.GetComponent<FlameThrower2>();
         minigun = playersMinigun.GetComponent<Minigun>();
-
-
         gunFire = GetComponentInChildren<Animation>();
         // gunFire = GetComponentInChildren<Animation>();
+
+        zanicHealth = GetComponent<ZanicHealth>();
+        RingPU = GetComponent<RingPowerup>();
+        
+        zem = GetComponent<ActivateZem>();
 
         // Start is called before the first frame update
     }
@@ -192,8 +200,24 @@ public class Shotgun : MonoBehaviour
                 shotgunmesh.SetActive(false);
                 defaultMachinegun.SetActive(false);
                 Debug.Log("I shot a minigun with a shotgun");
-
             }
+
+            if (hit.transform.gameObject.tag == "Zanic")
+            {
+                hit.transform.GetComponent<ZanicHealth>().TakeDamage(damage);
+            }
+
+            if (hit.transform.gameObject.tag == "Ring")
+            {
+                hit.transform.GetComponent<RingPowerup>().GetPoints();
+                Debug.Log("I shot a ring!");
+            }
+
+            if(hit.transform.gameObject.tag == "ZanicRing")
+            {
+                hit.transform.GetComponent<ActivateZem>().activiatezem();
+            }
+
 
 
             //Bullets that goes forward

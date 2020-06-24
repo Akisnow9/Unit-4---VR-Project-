@@ -88,6 +88,9 @@ using UnityEngine.UI;
     //Referance to gun animation
     public Animation gunFire;
 
+    ZanicHealth zanicHealth;
+    RingPowerup RingPU;
+    ActivateZem zem;
 
     //Sets up Referances
     void Awake()
@@ -102,9 +105,11 @@ using UnityEngine.UI;
        
              gunFire = GetComponentInChildren<Animation>();
 
-
-
-        }
+        zanicHealth = GetComponent<ZanicHealth>();
+        RingPU = GetComponent<RingPowerup>();
+        zem = GetComponent<ActivateZem>();
+    }
+   
 
         // updates the text ready to be displayed to the player
         void Start()
@@ -255,7 +260,21 @@ using UnityEngine.UI;
                     Debug.Log("I shot a flamer with a Minigun!");
                 }
 
+                if(hit.transform.gameObject.tag == "Zanic")
+                {
+                    hit.transform.GetComponent<ZanicHealth>().TakeDamage(damage);
+                }
 
+                if (hit.transform.gameObject.tag == "Ring")
+                {
+                    hit.transform.GetComponent<RingPowerup>().GetPoints();
+                    Debug.Log("I shot a ring!");
+                }
+
+                if (hit.transform.gameObject.tag == "ZanicRing")
+                {
+                    hit.transform.GetComponent<ActivateZem>().activiatezem();
+                }
 
 
             }

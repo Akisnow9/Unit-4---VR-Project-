@@ -75,13 +75,17 @@ using UnityEngine.UI;
         timer = GetComponent<Timer>();
         scoringsystem = GetComponent<ScoringSystem>();
        
-            currentHealth = startingHealth;
+        currentHealth = startingHealth;
             
         }
 
 
         void Update()
         {
+        if(currentHealth < 0)
+        {
+            currentHealth = 0;
+        }
             // If the player has just been damaged...
             if (damaged)
             {
@@ -124,6 +128,7 @@ using UnityEngine.UI;
                 Death();
             }
         }
+
 
 
         void Death()

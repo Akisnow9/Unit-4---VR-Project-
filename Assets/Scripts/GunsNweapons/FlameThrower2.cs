@@ -69,6 +69,7 @@ using UnityEngine.UI;
     //Referance to gun animation
     public Animation gunFire;
 
+  
     // public Animation gunFire;
 
     //Sets up Referances
@@ -139,6 +140,7 @@ using UnityEngine.UI;
             timer += Time.deltaTime;
             if (Input.GetMouseButton(0) && timer >= timeBetweenBullets && ammoCount > 0)
             {
+                
                 timer = 0f;
                 gunFire.Play();
                 // flames.SetActive(true);
@@ -188,10 +190,10 @@ using UnityEngine.UI;
                         gunAudio.Play();
                     }
                 // gunFire.Play();
-
+                
 
                 //Makes sure the muzzleFlash stops and starts again
-                fireparticles.Stop();
+               // fireparticles.Stop();
                 fireparticles.Play();
                 canShoot = false;
                 Invoke("ResetShooting", timeBetweenBullets);
@@ -212,7 +214,7 @@ using UnityEngine.UI;
             //If not firing, dont display the effects
             else if (Input.GetMouseButtonUp(0))
             {
-                fireparticles.Stop();
+              
                 gunAudio.Stop();
                 StopMuzzleFlash();
                 // gunLight.enabled = false;
@@ -233,6 +235,7 @@ using UnityEngine.UI;
 
 
         }
+        
         //displays a ray showing you where you have shot
         Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward * distanceOfRay);
     }

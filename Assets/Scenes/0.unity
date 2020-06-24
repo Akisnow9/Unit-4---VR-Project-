@@ -2239,7 +2239,7 @@ PrefabInstance:
         type: 3}
       propertyPath: playerHealth
       value: 
-      objectReference: {fileID: 907292811}
+      objectReference: {fileID: 0}
     - target: {fileID: 1366507990721713276, guid: 7eb3f5725a1984b45bf4bf9bdace2530,
         type: 3}
       propertyPath: m_Name
@@ -8342,7 +8342,7 @@ PrefabInstance:
         type: 3}
       propertyPath: playerHealth
       value: 
-      objectReference: {fileID: 907292811}
+      objectReference: {fileID: 0}
     - target: {fileID: 1366507990721713276, guid: 7eb3f5725a1984b45bf4bf9bdace2530,
         type: 3}
       propertyPath: m_Name
@@ -9340,18 +9340,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 4987672098567912608}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &907292811 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4987672099407547435, guid: d3e66ea3881c9244783a8f75e7b181fd,
-    type: 3}
-  m_PrefabInstance: {fileID: 4987672098567912608}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 907292807}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d99c09071cf09224bbe95c157dab843a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!43 &909532119
 Mesh:
   m_ObjectHideFlags: 0
@@ -9581,7 +9569,7 @@ PrefabInstance:
         type: 3}
       propertyPath: playerHealth
       value: 
-      objectReference: {fileID: 907292811}
+      objectReference: {fileID: 0}
     - target: {fileID: 1366507990721713276, guid: 7eb3f5725a1984b45bf4bf9bdace2530,
         type: 3}
       propertyPath: m_Name
@@ -11273,7 +11261,7 @@ PrefabInstance:
         type: 3}
       propertyPath: playerHealth
       value: 
-      objectReference: {fileID: 907292811}
+      objectReference: {fileID: 0}
     - target: {fileID: 1366507990721713276, guid: 7eb3f5725a1984b45bf4bf9bdace2530,
         type: 3}
       propertyPath: m_Name
@@ -22005,7 +21993,7 @@ PrefabInstance:
         type: 3}
       propertyPath: playerHealth
       value: 
-      objectReference: {fileID: 907292811}
+      objectReference: {fileID: 0}
     - target: {fileID: 1366507990721713276, guid: 7eb3f5725a1984b45bf4bf9bdace2530,
         type: 3}
       propertyPath: m_Name
@@ -22084,7 +22072,7 @@ PrefabInstance:
         type: 3}
       propertyPath: playerHealth
       value: 
-      objectReference: {fileID: 907292811}
+      objectReference: {fileID: 0}
     - target: {fileID: 1366507990721713276, guid: 7eb3f5725a1984b45bf4bf9bdace2530,
         type: 3}
       propertyPath: m_Name
@@ -22907,7 +22895,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4987672099407547435, guid: d3e66ea3881c9244783a8f75e7b181fd, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d3e66ea3881c9244783a8f75e7b181fd, type: 3}
 --- !u!222 &5151906798066180825
 CanvasRenderer:
@@ -23979,7 +23968,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 393a5e9aa0f16a64d875c271f8930e70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerHealth: {fileID: 907292811}
+  playerHealth: {fileID: 0}
   gameover: {fileID: 4248045196095455383}
   restartDelay: 5
 --- !u!114 &7711062663598317828

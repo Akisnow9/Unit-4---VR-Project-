@@ -2,18 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-//This script controls the Enemys health
-public class EnemyHealth : MonoBehaviour
+public class ZanicHealth : MonoBehaviour
 {
-
-    public Animator enemyAnimator;
-
     //Referance to when the enemey is hurt
-     public AudioSource enemyhurt;
+    public AudioSource enemyhurt;
 
-    //Referance to when the enemey is dead
-    public AudioSource enemydeath;
-   
+
     // EnemyWarningZone enemyWarningZone;
     //enemys starting Health 
     public int Ehealth = 100;
@@ -31,23 +25,18 @@ public class EnemyHealth : MonoBehaviour
     // bool HasExploded = false;
     // public GameObject Explosivo;
     public Transform pickupPosition;
+    public Transform pickupPosition2;
+    public Transform pickupPosition3;
+    public Transform pickupPosition4;
 
     public GameObject FireGO;
+
+    public float launchforce = 350;
 
     // stores pickups so when thge enmey dies, it instantiates powerups
     public Rigidbody[] SpawnPickupPrefabs;
     public bool isdead = false;
     public bool readytodrop = false;
-
-
-    //how long it takes before the zombie is destroyed
-    public float destoryDelay = 5f;
-    float destroyTimer;
-
-
-    // public GameObject warningzone;
-    //Removes Counter points from Warning zone when sighted zombie is dead
-    private int removeCpoints = 2;
 
     void Update()
     {
@@ -66,36 +55,25 @@ public class EnemyHealth : MonoBehaviour
         if (Ehealth <= 0f && Sightpoints == 2)
         {
             //GameObject WarningZone = GameObject.FindGameObjectWithTag("Finish");
-    
+
             Debug.Log("The enemy is no longer in sight");
             // warningZone.GetComponent<EnemyWarningZone>().RemoveCounterpoints(removeCpoints);
             Debug.Log("Points removed");
         }
-        if (isdead == true)
-            destroyTimer += Time.deltaTime;
-        if (destroyTimer >= destoryDelay)
-        {
-            //SceneManager.LoadScene("Winner");
-            //Application.Quit();
-            
-            Destroy(gameObject);
-        }
-    
-
     }
 
     //IF the enemy takes damage from a value from another script, it will take damage
     void Awake()
     {
 
-       // enemyWarningZone = warningzone.GetComponent<EnemyWarningZone>();
-         enemyhurt = GetComponent<AudioSource>();
+        // enemyWarningZone = warningzone.GetComponent<EnemyWarningZone>();
+        enemyhurt = GetComponent<AudioSource>();
         //  fireeffect = GetComponent<ParticleSystem>();
     }
 
     public void TakeDamage(int amount)
     {
-         Instantiate(blood, gameObject.transform.position, transform.rotation);
+        Instantiate(blood, gameObject.transform.position, transform.rotation);
         Ehealth -= amount;
         ScoringSystem.score += Scorevalue;
         enemyhurt.Play();
@@ -107,7 +85,7 @@ public class EnemyHealth : MonoBehaviour
             Die();
             //  HasExploded = true;
         }
-       
+
 
     }
     public void OnParticleCollision(GameObject other)
@@ -122,7 +100,7 @@ public class EnemyHealth : MonoBehaviour
         {
 
             Die();
-            
+
             //  HasExploded = true;
         }
 
@@ -133,25 +111,35 @@ public class EnemyHealth : MonoBehaviour
     //This function also gives players points to the scoreValue
     void Die()
     {
-        enemyAnimator.SetBool("IsDead", true);
+       
         // ScoreManager.score += Scorevalue;
         //Instantiate(Explosivo, gameObject.transform.position, transform.rotation);
         if (readytodrop != true)
         {
-            enemydeath.Play();
+            
             int a = Random.Range(0, SpawnPickupPrefabs.Length);
             Rigidbody spawnPickupInstance;
             spawnPickupInstance = Instantiate(SpawnPickupPrefabs[a], pickupPosition.position, pickupPosition.rotation) as Rigidbody;
+            spawnPickupInstance.AddForce(pickupPosition.up * launchforce);
+
+            spawnPickupInstance = Instantiate(SpawnPickupPrefabs[a], pickupPosition.position, pickupPosition2.rotation) as Rigidbody;
+            spawnPickupInstance.AddForce(pickupPosition.up * launchforce);
+
+            spawnPickupInstance = Instantiate(SpawnPickupPrefabs[a], pickupPosition.position, pickupPosition3.rotation) as Rigidbody;
+            spawnPickupInstance.AddForce(pickupPosition.up * launchforce);
+
+            spawnPickupInstance = Instantiate(SpawnPickupPrefabs[a], pickupPosition.position, pickupPosition4.rotation) as Rigidbody;
+            spawnPickupInstance.AddForce(pickupPosition.up * launchforce);
             //Destroy(gameObject);
             readytodrop = true;
             Debug.Log("I droped one!");
+            Destroy(gameObject);
         }
     }
 
-    public void Sighted( int amount)
+    public void Sighted(int amount)
     {
         Sightpoints += amount;
         Debug.Log("Enemy sighted");
     }
-    
 }
